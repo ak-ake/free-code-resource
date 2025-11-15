@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java OOP Concepts</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Java OOP Concepts</h1>
+        <p>Master Object-Oriented Programming principles in Java.</p>
+
+        <h2>Classes and Objects</h2>
+        <div class="code-block" data-language="Java">
+<code><span class="keyword">public class</span> <span class="class-name">Person</span> {
+    <span class="comment">// Fields (attributes)</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> <span class="keyword">int</span> age;
+    
+    <span class="comment">// Constructor</span>
+    <span class="keyword">public</span> <span class="function">Person</span>(String name, <span class="keyword">int</span> age) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.age = age;
+    }
+    
+    <span class="comment">// Methods</span>
+    <span class="keyword">public</span> String <span class="function">getName</span>() {
+        <span class="keyword">return</span> name;
+    }
+}</code>
+        </div>
+
+        <h2>Inheritance</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// Parent class</span>
+<span class="keyword">public class</span> <span class="class-name">Animal</span> {
+    <span class="keyword">public void</span> <span class="function">eat</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Animal is eating"</span>);
+    }
+}
+
+<span class="comment">// Child class</span>
+<span class="keyword">public class</span> <span class="class-name">Dog</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="function">eat</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Dog is eating"</span>);
+    }
+    
+    <span class="keyword">public void</span> <span class="function">bark</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Woof!"</span>);
+    }
+}</code>
+        </div>
+
+        <div class="example">
+            <h3>Encapsulation with Getters/Setters</h3>
+            <div class="code-block" data-language="Java">
+<code"><span class="keyword">public class</span> <span class="class-name">BankAccount</span> {
+    <span class="keyword">private</span> <span class="keyword">double</span> balance;
+    
+    <span class="comment">// Getter</span>
+    <span class="keyword">public double</span> <span class="function">getBalance</span>() {
+        <span class="keyword">return</span> balance;
+    }
+    
+    <span class="comment">// Setter with validation</span>
+    <span class="keyword">public void</span> <span class="function">setBalance</span>(<span class="keyword">double</span> amount) {
+        <span class="keyword">if</span> (amount > <span class="number">0</span>) {
+            <span class="keyword">this</span>.balance = amount;
+        } <span class="keyword">else</span> {
+            System.out.<span class="function">println</span>(<span class="string">"Invalid amount"</span>);
+        }
+    }
+}</code>
+            </div>
+        </div>
+
+        <h2>Polymorphism</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// Interface</span>
+<span class="keyword">public interface</span> <span class="class-name">Shape</span> {
+    <span class="keyword">double</span> <span class="function">getArea</span>();
+}
+
+<span class="comment">// Implementation 1</span>
+<span class="keyword">public class</span> <span class="class-name">Circle</span> <span class="keyword">implements</span> <span class="class-name">Shape</span> {
+    <span class="keyword">private double</span> radius;
+    
+    <span class="keyword">@Override</span>
+    <span class="keyword">public double</span> <span class="function">getArea</span>() {
+        <span class="keyword">return</span> Math.PI * radius * radius;
+    }
+}
+
+<span class="comment">// Implementation 2</span>
+<span class="keyword">public class</span> <span class="class-name">Square</span> <span class="keyword">implements</span> <span class="class-name">Shape</span> {
+    <span class="keyword">private double</span> side;
+    
+    <span class="keyword">@Override</span>
+    <span class="keyword">public double</span> <span class="function">getArea</span>() {
+        <span class="keyword">return</span> side * side;
+    }
+}</code>
+        </div>
+
+        <h2>Abstraction</h2>
+        <div class="code-block" data-language="Java">
+<code><span class="keyword">abstract class</span> <span class="class-name">Vehicle</span> {
+    <span class="keyword">private</span> String make;
+    
+    <span class="comment">// Abstract method</span>
+    <span class="keyword">abstract void</span> <span class="function">start</span>();
+    
+    <span class="comment">// Concrete method</span>
+    <span class="keyword">public void</span> <span class="function">honk</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Honk!"</span>);
+    }
+}
+
+<span class="keyword">class</span> <span class="class-name">Car</span> <span class="keyword">extends</span> <span class="class-name">Vehicle</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">void</span> <span class="function">start</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Car engine starts"</span>);
+    }
+}</code>
+        </div>
+
+        <h2>Key OOP Principles</h2>
+        <ul class="features">
+            <li><strong>Encapsulation</strong> - Hide internal details</li>
+            <li><strong>Inheritance</strong> - Reuse code through hierarchy</li>
+            <li><strong>Polymorphism</strong> - Same interface, different behaviors</li>
+            <li><strong>Abstraction</strong> - Show only necessary details</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use private for fields, public for methods</li>
+                <li>Prefer composition over inheritance</li>
+                <li>Use interfaces for contracts</li>
+                <li>Follow SOLID principles</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Enterprise application development</li>
+                <li>Game development</li>
+                <li>Mobile applications</li>
+                <li>System software</li>
+                <li>Data processing applications</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

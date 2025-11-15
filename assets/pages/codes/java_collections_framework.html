@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Collections Framework</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Java Collections Framework</h1>
+        <p>Master Java collections for efficient data management.</p>
+
+        <h2>List - Ordered Collection</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="keyword">import java.util.*;</span>
+
+<span class="comment">// ArrayList - Resizable array</span>
+List&lt;String&gt; list = <span class="keyword">new</span> <span class="function">ArrayList</span>&lt;&gt;();
+list.<span class="function">add</span>(<span class="string">"Apple"</span>);
+list.<span class="function">add</span>(<span class="string">"Banana"</span>);
+list.<span class="function">remove</span>(<span class="number">0</span>);
+
+<span class="comment">// LinkedList - Efficient insertion/deletion</span>
+List&lt;Integer&gt; linkedList = <span class="keyword">new</span> <span class="function">LinkedList</span>&lt;&gt;();
+linkedList.<span class="function">add</span>(<span class="number">1</span>);
+linkedList.<span class="function">addFirst</span>(<span class="number">0</span>);
+linkedList.<span class="function">removeLast</span>();</code>
+        </div>
+
+        <h2>Set - Unique Elements</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// HashSet - No order, fast lookup</span>
+Set&lt;String&gt; hashSet = <span class="keyword">new</span> <span class="function">HashSet</span>&lt;&gt;();
+hashSet.<span class="function">add</span>(<span class="string">"apple"</span>);
+hashSet.<span class="function">add</span>(<span class="string">"apple"</span>);  <span class="comment">// Won't add duplicate</span>
+
+<span class="comment">// TreeSet - Sorted, slower insertion</span>
+Set&lt;Integer&gt; treeSet = <span class="keyword">new</span> <span class="function">TreeSet</span>&lt;&gt;();
+treeSet.<span class="function">add</span>(<span class="number">3</span>);
+treeSet.<span class="function">add</span>(<span class="number">1</span>);
+treeSet.<span class="function">add</span>(<span class="number">2</span>);  <span class="comment">// Automatically sorted</span>
+
+<span class="comment">// Iterate through set</span>
+<span class="keyword">for</span> (<span class="keyword">int</span> num : treeSet) {
+    System.out.<span class="function">println</span>(num);
+}</code>
+        </div>
+
+        <h2>Map - Key-Value Pairs</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// HashMap - Fast lookup by key</span>
+Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="function">HashMap</span>&lt;&gt;();
+map.<span class="function">put</span>(<span class="string">"apple"</span>, <span class="number">5</span>);
+map.<span class="function">put</span>(<span class="string">"banana"</span>, <span class="number">3</span>);
+
+<span class="comment">// Access values</span>
+<span class="keyword">int</span> count = map.<span class="function">get</span>(<span class="string">"apple"</span>);
+<span class="keyword">if</span> (map.<span class="function">containsKey</span>(<span class="string">"orange"</span>)) { }
+
+<span class="comment">// Iterate through map</span>
+<span class="keyword">for</span> (String key : map.<span class="function">keySet</span>()) {
+    System.out.<span class="function">println</span>(key + <span class="string">": "</span> + map.<span class="function">get</span>(key));
+}</code>
+        </div>
+
+        <div class="example">
+            <h3>Complete Collections Example</h3>
+            <div class="code-block" data-language="Java">
+<code"><span class="keyword">import java.util.*;</span>
+
+<span class="keyword">public class</span> <span class="class-name">CollectionExample</span> {
+    <span class="keyword">public static void</span> <span class="function">main</span>(String[] args) {
+        <span class="comment">// List of students</span>
+        List&lt;String&gt; students = <span class="keyword">new</span> <span class="function">ArrayList</span>&lt;&gt;();
+        students.<span class="function">add</span>(<span class="string">"Alice"</span>);
+        students.<span class="function">add</span>(<span class="string">"Bob"</span>);
+        
+        <span class="comment">// Grades map</span>
+        Map&lt;String, Double&gt; grades = <span class="keyword">new</span> <span class="function">HashMap</span>&lt;&gt;();
+        grades.<span class="function">put</span>(<span class="string">"Alice"</span>, <span class="number">95.5</span>);
+        grades.<span class="function">put</span>(<span class="string">"Bob"</span>, <span class="number">87.3</span>);
+        
+        <span class="comment">// Print all</span>
+        <span class="keyword">for</span> (String student : students) {
+            System.out.<span class="function">println</span>(student + <span class="string">": "</span> + grades.<span class="function">get</span>(student));
+        }
+    }
+}</code>
+            </div>
+        </div>
+
+        <h2>Queue - FIFO Structure</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// Queue interface (FIFO)</span>
+Queue&lt;String&gt; queue = <span class="keyword">new</span> <span class="function">LinkedList</span>&lt;&gt;();
+queue.<span class="function">add</span>(<span class="string">"First"</span>);
+queue.<span class="function">add</span>(<span class="string">"Second"</span>);
+String first = queue.<span class="function">remove</span>();  <span class="comment">// Removes first</span>
+
+<span class="comment">// Priority Queue</span>
+PriorityQueue&lt;Integer&gt; pq = <span class="keyword">new</span> <span class="function">PriorityQueue</span>&lt;&gt;();
+pq.<span class="function">add</span>(<span class="number">5</span>);
+pq.<span class="function">add</span>(<span class="number">1</span>);
+pq.<span class="function">add</span>(<span class="number">3</span>);
+System.out.<span class="function">println</span>(pq.<span class="function">poll</span>());  <span class="comment">// Returns 1</span></code>
+        </div>
+
+        <h2>Collection Methods</h2>
+        <ul class="features">
+            <li><strong>add/remove</strong> - Add or remove elements</li>
+            <li><strong>size/isEmpty</strong> - Check collection size</li>
+            <li><strong>contains</strong> - Check if element exists</li>
+            <li><strong>clear</strong> - Remove all elements</li>
+            <li><strong>sort</strong> - Sort collection</li>
+            <li><strong>stream</strong> - Process collections functionally</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Choose right collection for your use case</li>
+                <li>Use generics for type safety</li>
+                <li>Know time complexity of operations</li>
+                <li>Use immutable collections when possible</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Storing and retrieving data</li>
+                <li>Implementing caches</li>
+                <li>Processing streams of data</li>
+                <li>Graph and tree structures</li>
+                <li>Task scheduling and prioritization</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

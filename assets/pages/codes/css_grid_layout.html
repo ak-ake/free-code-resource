@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid Layout</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>CSS Grid Layout</h1>
+        <p>Master CSS Grid for creating powerful, flexible 2D layouts.</p>
+
+        <h2>What is CSS Grid?</h2>
+        <p>CSS Grid is a 2D layout system that allows you to create complex layouts with rows and columns. It provides precise control over item placement and alignment.</p>
+
+        <h2>Basic Grid Setup</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="class-name">.container</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="number">1fr</span> <span class="number">2fr</span> <span class="number">1fr</span>;
+  <span class="keyword">grid-template-rows</span>: <span class="number">100px</span> <span class="number">auto</span> <span class="number">100px</span>;
+  <span class="keyword">gap</span>: <span class="number">1rem</span>;
+}</code>
+        </div>
+
+        <div class="example">
+            <h3>Responsive Grid Layout</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="class-name">.grid-container</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="function">repeat</span>(<span class="keyword">auto-fit</span>, <span class="function">minmax</span>(<span class="number">300px</span>, <span class="number">1fr</span>));
+  <span class="keyword">gap</span>: <span class="number">2rem</span>;
+  <span class="keyword">padding</span>: <span class="number">2rem</span>;
+}
+
+<span class="class-name">.grid-item</span> {
+  <span class="keyword">background</span>: <span class="string">#f0f0f0</span>;
+  <span class="keyword">padding</span>: <span class="number">1.5rem</span>;
+  <span class="keyword">border-radius</span>: <span class="number">8px</span>;
+}</code>
+            </div>
+        </div>
+
+        <h2>Key Grid Properties</h2>
+        <h3>Container Properties</h3>
+        <ul class="features">
+            <li><strong>grid-template-columns</strong> - Define column layout</li>
+            <li><strong>grid-template-rows</strong> - Define row layout</li>
+            <li><strong>gap</strong> - Space between grid items</li>
+            <li><strong>justify-items</strong> - Horizontal alignment</li>
+            <li><strong>align-items</strong> - Vertical alignment</li>
+            <li><strong>grid-auto-flow</strong> - Item placement direction</li>
+        </ul>
+
+        <h3>Item Properties</h3>
+        <ul class="features">
+            <li><strong>grid-column</strong> - Column span</li>
+            <li><strong>grid-row</strong> - Row span</li>
+            <li><strong>justify-self</strong> - Individual horizontal alignment</li>
+            <li><strong>align-self</strong> - Individual vertical alignment</li>
+        </ul>
+
+        <div class="example">
+            <h3>Advanced Grid with Named Areas</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="class-name">.layout</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-areas</span>:
+    <span class="string">"header header header"</span>
+    <span class="string">"sidebar main main"</span>
+    <span class="string">"footer footer footer"</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="number">200px</span> <span class="number">1fr</span> <span class="number">1fr</span>;
+  <span class="keyword">gap</span>: <span class="number">1rem</span>;
+}
+
+<span class="class-name">.header</span> { <span class="keyword">grid-area</span>: <span class="string">header</span>; }
+<span class="class-name">.sidebar</span> { <span class="keyword">grid-area</span>: <span class="string">sidebar</span>; }
+<span class="class-name">.main</span> { <span class="keyword">grid-area</span>: <span class="string">main</span>; }
+<span class="class-name">.footer</span> { <span class="keyword">grid-area</span>: <span class="string">footer</span>; }</code>
+            </div>
+        </div>
+
+        <h2>Grid Functions</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="comment">/* repeat() - Repeat column/row patterns */</span>
+<span class="keyword">grid-template-columns</span>: <span class="function">repeat</span>(<span class="number">3</span>, <span class="number">1fr</span>);
+
+<span class="comment">/* minmax() - Set min and max sizes */</span>
+<span class="keyword">grid-template-columns</span>: <span class="function">repeat</span>(<span class="keyword">auto-fit</span>, <span class="function">minmax</span>(<span class="number">250px</span>, <span class="number">1fr</span>));
+
+<span class="comment">/* fr unit - Fractional units */</span>
+<span class="keyword">grid-template-columns</span>: <span class="number">2fr</span> <span class="number">1fr</span> <span class="number">1fr</span>;</code>
+        </div>
+
+        <div class="tips">
+            <strong>Pro Tips:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use <code>fr</code> units for flexible sizing</li>
+                <li>Use <code>repeat()</code> to reduce code repetition</li>
+                <li>Use <code>auto-fit</code> for responsive grids</li>
+                <li>Named grid areas improve readability</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Website layouts (header, sidebar, footer)</li>
+                <li>Photo galleries and card layouts</li>
+                <li>Dashboard layouts</li>
+                <li>Magazine-style layouts</li>
+                <li>Responsive design systems</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dart Collections</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Dart Collections</h1>
+        <p>Work with Lists, Sets, Maps, and other collections.</p>
+
+        <h2>Lists</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="comment">// Create lists</span>
+<span class="keyword">List</span>&lt;String&gt; names = [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>];
+<span class="keyword">var</span> numbers = &lt;<span class="keyword">int</span>&gt;[1, 2, 3];
+
+<span class="comment">// List operations</span>
+names.<span class="function">add</span>(<span class="string">"Charlie"</span>);
+names.<span class="function">remove</span>(<span class="string">"Bob"</span>);
+names.<span class="function">forEach</span>((name) =&gt; print(name));
+
+<span class="comment">// List methods</span>
+names.<span class="function">length</span>;
+names.<span class="function">isEmpty</span>;
+names.<span class="function">map</span>((n) =&gt; n.<span class="function">toUpperCase</span>());</code>
+        </div>
+
+        <h2>Maps</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="comment">// Create maps</span>
+<span class="keyword">Map</span>&lt;String, <span class="keyword">int</span>&gt; scores = {
+  <span class="string">"Alice"</span>: 95,
+  <span class="string">"Bob"</span>: 87
+};
+
+<span class="comment">// Map operations</span>
+scores[<span class="string">"Charlie"</span>] = 92;
+scores.<span class="function">remove</span>(<span class="string">"Bob"</span>);
+scores.<span class="function">keys</span>;
+scores.<span class="function">values</span>;
+
+<span class="comment">// Iteration</span>
+scores.<span class="function">forEach</span>((name, score) {
+  print(<span class="string">"$name: $score"</span>);
+});</code>
+        </div>
+
+        <h2>Sets</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="comment">// Create sets</span>
+<span class="keyword">Set</span>&lt;String&gt; colors = {<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>};
+
+<span class="comment">// Set operations</span>
+colors.<span class="function">add</span>(<span class="string">"yellow"</span>);
+colors.<span class="function">remove</span>(<span class="string">"red"</span>);
+colors.<span class="function">contains</span>(<span class="string">"blue"</span>);  <span class="comment">// => true</span>
+
+<span class="comment">// Set algebra</span>
+<span class="keyword">var</span> union = colors.<span class="function">union</span>({<span class="string">"purple"</span>});
+<span class="keyword">var</span> intersection = colors.<span class="function">intersection</span>({<span class="string">"green"</span>});</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>List</strong> - Ordered, mutable collection</li>
+            <li><strong>Map</strong> - Key-value pairs</li>
+            <li><strong>Set</strong> - Unique elements</li>
+            <li><strong>Iterable</strong> - Base for all collections</li>
+            <li><strong>Queue</strong> - FIFO operations</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use type annotations for clarity</li>
+                <li>Prefer List/Map/Set for common cases</li>
+                <li>Use spread operator for combining collections</li>
+                <li>Leverage functional methods like map, filter</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Data storage</li>
+                <li>Model properties</li>
+                <li>Configuration objects</li>
+                <li>Filtering and transforming data</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

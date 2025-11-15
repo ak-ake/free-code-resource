@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semantic Elements</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>HTML Semantic Elements</h1>
+        <p>Master semantic HTML to improve accessibility, SEO, and code structure.</p>
+
+        <h2>What are Semantic Elements?</h2>
+        <p>Semantic elements clearly describe their meaning to both the browser and developer. They improve accessibility and SEO by providing context about the content.</p>
+
+        <h2>Key Semantic Elements</h2>
+
+        <h3>Document Structure</h3>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;header&gt;</span> - Page or section header <span class="tag">&lt;/header&gt;</span>
+<span class="tag">&lt;nav&gt;</span> - Navigation links <span class="tag">&lt;/nav&gt;</span>
+<span class="tag">&lt;main&gt;</span> - Main content <span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;article&gt;</span> - Independent content <span class="tag">&lt;/article&gt;</span>
+<span class="tag">&lt;section&gt;</span> - Grouped content <span class="tag">&lt;/section&gt;</span>
+<span class="tag">&lt;aside&gt;</span> - Sidebar or supplementary content <span class="tag">&lt;/aside&gt;</span>
+<span class="tag">&lt;footer&gt;</span> - Page or section footer <span class="tag">&lt;/footer&gt;</span></code>
+        </div>
+
+        <div class="example">
+            <h3>Complete Semantic Document Structure</h3>
+            <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Blog Post<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;header&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>My Blog<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;nav&gt;</span>
+        <span class="tag">&lt;ul&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="string">"/"</span><span class="tag">&gt;</span>Home<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+          <span class="tag">&lt;li&gt;</span><span class="tag">&lt;a</span> <span class="attribute">href</span>=<span class="string">"/posts"</span><span class="tag">&gt;</span>Posts<span class="tag">&lt;/a&gt;</span><span class="tag">&lt;/li&gt;</span>
+        <span class="tag">&lt;/ul&gt;</span>
+      <span class="tag">&lt;/nav&gt;</span>
+    <span class="tag">&lt;/header&gt;</span>
+
+    <span class="tag">&lt;main&gt;</span>
+      <span class="tag">&lt;article&gt;</span>
+        <span class="tag">&lt;h2&gt;</span>Learning Semantic HTML<span class="tag">&lt;/h2&gt;</span>
+        <span class="tag">&lt;p&gt;</span>Semantic HTML makes your code more meaningful...<span class="tag">&lt;/p&gt;</span>
+      <span class="tag">&lt;/article&gt;</span>
+
+      <span class="tag">&lt;aside&gt;</span>
+        <span class="tag">&lt;h3&gt;</span>Related Articles<span class="tag">&lt;/h3&gt;</span>
+      <span class="tag">&lt;/aside&gt;</span>
+    <span class="tag">&lt;/main&gt;</span>
+
+    <span class="tag">&lt;footer&gt;</span>
+      <span class="tag">&lt;p&gt;</span>&copy; 2024 My Blog<span class="tag">&lt;/p&gt;</span>
+    <span class="tag">&lt;/footer&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span></code>
+            </div>
+        </div>
+
+        <h2>Text Semantic Elements</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;strong&gt;</span>Important text<span class="tag">&lt;/strong&gt;</span> - Strong importance
+<span class="tag">&lt;em&gt;</span>Emphasized text<span class="tag">&lt;/em&gt;</span> - Emphasis
+<span class="tag">&lt;mark&gt;</span>Highlighted text<span class="tag">&lt;/mark&gt;</span> - Marked/highlighted
+<span class="tag">&lt;time&gt;</span>2024-01-15<span class="tag">&lt;/time&gt;</span> - Date/time
+<span class="tag">&lt;address&gt;</span>Contact info<span class="tag">&lt;/address&gt;</span> - Contact information
+<span class="tag">&lt;code&gt;</span>var x = 5;<span class="tag">&lt;/code&gt;</span> - Code snippet
+<span class="tag">&lt;figure&gt;</span>...<span class="tag">&lt;/figure&gt;</span> - Self-contained illustration
+<span class="tag">&lt;figcaption&gt;</span>Caption<span class="tag">&lt;/figcaption&gt;</span> - Figure caption</code>
+        </div>
+
+        <h2>Benefits of Semantic HTML</h2>
+        <ul class="features">
+            <li><strong>Accessibility</strong> - Screen readers interpret content correctly</li>
+            <li><strong>SEO</strong> - Search engines understand content structure</li>
+            <li><strong>Maintainability</strong> - Code is easier to understand and modify</li>
+            <li><strong>Better Browser Support</strong> - Consistent rendering across browsers</li>
+            <li><strong>Mobile Friendly</strong> - Simpler responsive design implementation</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Pro Tips:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use one <code>&lt;main&gt;</code> per page for primary content</li>
+                <li>Use <code>&lt;nav&gt;</code> for major navigation links</li>
+                <li>Use <code>&lt;article&gt;</code> for self-contained content</li>
+                <li>Use <code>&lt;section&gt;</code> to group thematically related content</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Building accessible websites</li>
+                <li>Improving SEO rankings</li>
+                <li>Creating blog posts and articles</li>
+                <li>Building news websites</li>
+                <li>Documentation sites</li>
+                <li>Content management systems</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

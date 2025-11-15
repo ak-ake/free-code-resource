@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python File Handling</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Python File Handling</h1>
+        <p>Master file operations in Python for reading, writing, and manipulating files.</p>
+
+        <h2>Opening and Closing Files</h2>
+        <div class="code-block" data-language="Python">
+<code><span class="comment"># Using open() function</span>
+file = <span class="function">open</span>(<span class="string">'file.txt'</span>, <span class="string">'r'</span>)  <span class="comment"># 'r' = read mode</span>
+content = file.<span class="function">read</span>()
+file.<span class="function">close</span>()
+
+<span class="comment"># Using context manager (recommended)</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'file.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    content = file.<span class="function">read</span>()
+    <span class="comment"># File automatically closes</span></code>
+        </div>
+
+        <h2>File Modes</h2>
+        <ul class="features">
+            <li><strong>'r'</strong> - Read (default)</li>
+            <li><strong>'w'</strong> - Write (overwrites)</li>
+            <li><strong>'a'</strong> - Append (adds to end)</li>
+            <li><strong>'x'</strong> - Create (fails if exists)</li>
+            <li><strong>'b'</strong> - Binary mode</li>
+            <li><strong>'t'</strong> - Text mode (default)</li>
+            <li><strong>'+'</strong> - Read and write</li>
+        </ul>
+
+        <h2>Reading Files</h2>
+        <div class="code-block" data-language="Python">
+<code"><span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    <span class="comment"># Read entire file</span>
+    content = file.<span class="function">read</span>()
+    
+    <span class="comment"># Read line by line</span>
+    <span class="keyword">for</span> line <span class="keyword">in</span> file:
+        <span class="function">print</span>(line.<span class="function">strip</span>())
+    
+    <span class="comment"># Read specific lines</span>
+    file.<span class="function">seek</span>(<span class="number">0</span>)  <span class="comment"># Go to beginning</span>
+    first_line = file.<span class="function">readline</span>()
+    all_lines = file.<span class="function">readlines</span>()  <span class="comment"># Returns list</span></code>
+        </div>
+
+        <div class="example">
+            <h3>Writing to Files</h3>
+            <div class="code-block" data-language="Python">
+<code"><span class="comment"># Write to file (overwrites)</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:
+    file.<span class="function">write</span>(<span class="string">'Hello World\n'</span>)
+    file.<span class="function">write</span>(<span class="string">'Line 2\n'</span>)
+
+<span class="comment"># Append to file</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'a'</span>) <span class="keyword">as</span> file:
+    file.<span class="function">write</span>(<span class="string">'Line 3\n'</span>)
+
+<span class="comment"># Write multiple lines</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.txt'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:
+    lines = [<span class="string">'Line 1\n'</span>, <span class="string">'Line 2\n'</span>, <span class="string">'Line 3\n'</span>]
+    file.<span class="function">writelines</span>(lines)</code>
+            </div>
+        </div>
+
+        <h2>Working with Different File Types</h2>
+        <h3>JSON Files</h3>
+        <div class="code-block" data-language="Python">
+<code"><span class="keyword">import</span> json
+
+<span class="comment"># Read JSON</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.json'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    data = json.<span class="function">load</span>(file)
+
+<span class="comment"># Write JSON</span>
+data = {<span class="string">'name'</span>: <span class="string">'John'</span>, <span class="string">'age'</span>: <span class="number">30</span>}
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.json'</span>, <span class="string">'w'</span>) <span class="keyword">as</span> file:
+    json.<span class="function">dump</span>(data, file, indent=<span class="number">2</span>)</code>
+        </div>
+
+        <h3>CSV Files</h3>
+        <div class="code-block" data-language="Python">
+<code"><span class="keyword">import</span> csv
+
+<span class="comment"># Read CSV</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'data.csv'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> file:
+    reader = csv.<span class="function">reader</span>(file)
+    <span class="keyword">for</span> row <span class="keyword">in</span> reader:
+        <span class="function">print</span>(row)
+
+<span class="comment"># Write CSV</span>
+<span class="keyword">with</span> <span class="function">open</span>(<span class="string">'output.csv'</span>, <span class="string">'w'</span>, newline=<span class="string">''</span>) <span class="keyword">as</span> file:
+    writer = csv.<span class="function">writer</span>(file)
+    writer.<span class="function">writerow</span>([<span class="string">'Name'</span>, <span class="string">'Age'</span>])
+    writer.<span class="function">writerow</span>([<span class="string">'John'</span>, <span class="number">30</span>])</code>
+        </div>
+
+        <h2>File Operations</h2>
+        <div class="code-block" data-language="Python">
+<code"><span class="keyword">import</span> os
+
+<span class="comment"># Check if file exists</span>
+<span class="keyword">if</span> os.<span class="attribute">path</span>.<span class="function">exists</span>(<span class="string">'file.txt'</span>):
+    <span class="function">print</span>(<span class="string">'File exists'</span>)
+
+<span class="comment"># Get file size</span>
+size = os.<span class="attribute">path</span>.<span class="function">getsize</span>(<span class="string">'file.txt'</span>)
+
+<span class="comment"># Rename file</span>
+os.<span class="function">rename</span>(<span class="string">'old.txt'</span>, <span class="string">'new.txt'</span>)
+
+<span class="comment"># Delete file</span>
+os.<span class="function">remove</span>(<span class="string">'file.txt'</span>)</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always use context managers (with statement)</li>
+                <li>Handle file not found errors</li>
+                <li>Use proper file encoding (UTF-8)</li>
+                <li>Close files properly even if error occurs</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Reading configuration files</li>
+                <li>Processing data files</li>
+                <li>Logging application events</li>
+                <li>Data import/export</li>
+                <li>Batch file processing</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

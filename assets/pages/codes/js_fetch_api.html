@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fetch API</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>JavaScript Fetch API</h1>
+        <p>Learn how to fetch data from servers and APIs using the Fetch API.</p>
+
+        <h2>Basic Fetch Request</h2>
+        <div class="code-block" data-language="JavaScript">
+<code><span class="function">fetch</span>(<span class="string">'https://api.example.com/data'</span>)
+  .<span class="function">then</span>(response => response.<span class="function">json</span>())
+  .<span class="function">then</span>(data => {
+    console.<span class="function">log</span>(<span class="string">'Data received:'</span>, data);
+  })
+  .<span class="keyword">catch</span>(error => {
+    console.<span class="function">log</span>(<span class="string">'Error:'</span>, error);
+  });</code>
+        </div>
+
+        <h2>GET Request</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="keyword">const</span> <span class="function">fetchData</span> = <span class="keyword">async</span> () => {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://api.example.com/users'</span>);
+    
+    <span class="keyword">if</span> (!response.<span class="attribute">ok</span>) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'Network response error'</span>);
+    }
+    
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+    console.<span class="function">log</span>(data);
+  } <span class="keyword">catch</span> (error) {
+    console.<span class="function">log</span>(<span class="string">'Fetch error:'</span>, error);
+  }
+};
+
+<span class="function">fetchData</span>();</code>
+        </div>
+
+        <div class="example">
+            <h3>POST Request with Data</h3>
+            <div class="code-block" data-language="JavaScript">
+<code><span class="keyword">const</span> <span class="function">postData</span> = <span class="keyword">async</span> () => {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://api.example.com/users'</span>, {
+      <span class="keyword">method</span>: <span class="string">'POST'</span>,
+      <span class="keyword">headers</span>: {
+        <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,
+      },
+      <span class="keyword">body</span>: <span class="function">JSON</span>.<span class="function">stringify</span>({
+        <span class="attribute">name</span>: <span class="string">'John'</span>,
+        <span class="attribute">email</span>: <span class="string">'john@example.com'</span>
+      })
+    });
+    
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+    console.<span class="function">log</span>(<span class="string">'Success:'</span>, data);
+  } <span class="keyword">catch</span> (error) {
+    console.<span class="function">log</span>(<span class="string">'Error:'</span>, error);
+  }
+};
+
+<span class="function">postData</span>();</code>
+            </div>
+        </div>
+
+        <h2>Common HTTP Methods</h2>
+        <ul class="features">
+            <li><strong>GET</strong> - Retrieve data</li>
+            <li><strong>POST</strong> - Create new data</li>
+            <li><strong>PUT</strong> - Update entire resource</li>
+            <li><strong>PATCH</strong> - Partial update</li>
+            <li><strong>DELETE</strong> - Remove data</li>
+        </ul>
+
+        <h2>Response Methods</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="function">fetch</span>(url)
+  .<span class="function">then</span>(response => {
+    <span class="comment">// Parse response based on content type</span>
+    response.<span class="function">json</span>();      <span class="comment">// Parse JSON</span>
+    response.<span class="function">text</span>();      <span class="comment">// Parse text</span>
+    response.<span class="function">blob</span>();      <span class="comment">// Parse as blob</span>
+    response.<span class="function">arrayBuffer</span>();  <span class="comment">// Parse as array buffer</span>
+  });</code>
+        </div>
+
+        <h2>Error Handling</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="keyword">const</span> <span class="function">fetchWithErrorHandling</span> = <span class="keyword">async</span> (url) => {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(url);
+    
+    <span class="keyword">if</span> (response.<span class="attribute">status</span> === <span class="number">404</span>) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'Data not found'</span>);
+    }
+    
+    <span class="keyword">if</span> (!response.<span class="attribute">ok</span>) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">`HTTP error! status: ${response.status}`</span>);
+    }
+    
+    <span class="keyword">return</span> <span class="keyword">await</span> response.<span class="function">json</span>();
+  } <span class="keyword">catch</span> (error) {
+    console.<span class="function">error</span>(<span class="string">'Fetch failed:'</span>, error.<span class="attribute">message</span>);
+  }
+};</code>
+        </div>
+
+        <h2>Fetch with Headers</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="keyword">const</span> <span class="function">fetchWithHeaders</span> = <span class="keyword">async</span> () => {
+  <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(<span class="string">'https://api.example.com/data'</span>, {
+    <span class="keyword">method</span>: <span class="string">'GET'</span>,
+    <span class="keyword">headers</span>: {
+      <span class="string">'Authorization'</span>: <span class="string">'Bearer token123'</span>,
+      <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,
+      <span class="string">'Accept'</span>: <span class="string">'application/json'</span>
+    }
+  });
+  
+  <span class="keyword">return</span> <span class="keyword">await</span> response.<span class="function">json</span>();
+};</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always check response.ok or status code</li>
+                <li>Use async/await for cleaner code</li>
+                <li>Handle errors properly</li>
+                <li>Consider request timeout</li>
+                <li>Use proper headers for API communication</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Loading data from APIs</li>
+                <li>Form submission to server</li>
+                <li>Real-time data updates</li>
+                <li>File uploads</li>
+                <li>Authentication requests</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

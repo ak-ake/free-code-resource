@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Event Handling</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>JavaScript Event Handling</h1>
+        <p>Master event handling to create interactive and responsive web applications.</p>
+
+        <h2>Adding Event Listeners</h2>
+        <div class="code-block" data-language="JavaScript">
+<code><span class="comment">// Basic event listener</span>
+element.<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="keyword">function</span>(event) {
+  console.<span class="function">log</span>(<span class="string">'Button clicked'</span>);
+});
+
+<span class="comment">// Arrow function syntax</span>
+element.<span class="function">addEventListener</span>(<span class="string">'click'</span>, (event) => {
+  console.<span class="function">log</span>(<span class="string">'Button clicked'</span>);
+});</code>
+        </div>
+
+        <h2>Event Object Properties</h2>
+        <div class="code-block" data-language="JavaScript">
+<code">element.<span class="function">addEventListener</span>(<span class="string">'click'</span>, (event) => {
+  <span class="comment">// Event properties</span>
+  console.<span class="function">log</span>(event.<span class="attribute">target</span>);        <span class="comment">// Element that triggered event</span>
+  console.<span class="function">log</span>(event.<span class="attribute">type</span>);          <span class="comment">// Event type ('click')</span>
+  console.<span class="function">log</span>(event.<span class="attribute">clientX</span>);       <span class="comment">// Mouse X position</span>
+  console.<span class="function">log</span>(event.<span class="attribute">clientY</span>);       <span class="comment">// Mouse Y position</span>
+  console.<span class="function">log</span>(event.<span class="attribute">key</span>);           <span class="comment">// Key pressed (for keyboard)</span>
+  
+  <span class="comment">// Prevent default behavior</span>
+  event.<span class="function">preventDefault</span>();
+  
+  <span class="comment">// Stop event propagation</span>
+  event.<span class="function">stopPropagation</span>();
+});</code>
+        </div>
+
+        <div class="example">
+            <h3>Form Validation Example</h3>
+            <div class="code-block" data-language="JavaScript">
+<code><span class="keyword">const</span> form = <span class="keyword">document</span>.<span class="function">querySelector</span>(<span class="string">'.contact-form'</span>);
+<span class="keyword">const</span> emailInput = form.<span class="function">querySelector</span>(<span class="string">'input[type="email"]'</span>);
+
+form.<span class="function">addEventListener</span>(<span class="string">'submit'</span>, (event) => {
+  <span class="comment">// Prevent form submission</span>
+  event.<span class="function">preventDefault</span>();
+  
+  <span class="comment">// Validate email</span>
+  <span class="keyword">if</span> (emailInput.<span class="attribute">value</span>.<span class="function">includes</span>(<span class="string">'@'</span>)) {
+    console.<span class="function">log</span>(<span class="string">'Email is valid'</span>);
+    form.<span class="function">submit</span>();
+  } <span class="keyword">else</span> {
+    console.<span class="function">log</span>(<span class="string">'Invalid email'</span>);
+    emailInput.<span class="attribute">classList</span>.<span class="function">add</span>(<span class="string">'error'</span>);
+  }
+});</code>
+            </div>
+        </div>
+
+        <h2>Event Delegation</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="comment">// Listen on parent for child clicks</span>
+<span class="keyword">document</span>.<span class="function">querySelector</span>(<span class="string">'.list'</span>).<span class="function">addEventListener</span>(<span class="string">'click'</span>, (event) => {
+  <span class="keyword">if</span> (event.<span class="attribute">target</span>.<span class="attribute">classList</span>.<span class="function">contains</span>(<span class="string">'item'</span>)) {
+    console.<span class="function">log</span>(<span class="string">'Item clicked:'</span>, event.<span class="attribute">target</span>.<span class="attribute">textContent</span>);
+  }
+});</code>
+        </div>
+
+        <h2>Mouse Events</h2>
+        <ul class="features">
+            <li><strong>click</strong> - Mouse button clicked</li>
+            <li><strong>dblclick</strong> - Double-clicked</li>
+            <li><strong>mousedown</strong> - Mouse button pressed</li>
+            <li><strong>mouseup</strong> - Mouse button released</li>
+            <li><strong>mousemove</strong> - Mouse moving</li>
+            <li><strong>mouseenter</strong> - Mouse enters element</li>
+            <li><strong>mouseleave</strong> - Mouse leaves element</li>
+        </ul>
+
+        <h2>Keyboard Events</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="keyword">document</span>.<span class="function">addEventListener</span>(<span class="string">'keydown'</span>, (event) => {
+  <span class="keyword">if</span> (event.<span class="attribute">key</span> === <span class="string">'Enter'</span>) {
+    console.<span class="function">log</span>(<span class="string">'Enter key pressed'</span>);
+  }
+  
+  <span class="keyword">if</span> (event.<span class="attribute">ctrlKey</span> && event.<span class="attribute">key</span> === <span class="string">'s'</span>) {
+    event.<span class="function">preventDefault</span>();
+    console.<span class="function">log</span>(<span class="string">'Ctrl+S pressed'</span>);
+  }
+});</code>
+        </div>
+
+        <h2>Form Events</h2>
+        <div class="code-block" data-language="JavaScript">
+<code"><span class="keyword">const</span> input = <span class="keyword">document</span>.<span class="function">querySelector</span>(<span class="string">'input'</span>);
+
+<span class="comment">// Input value changed</span>
+input.<span class="function">addEventListener</span>(<span class="string">'input'</span>, (event) => {
+  console.<span class="function">log</span>(<span class="string">'Value:'</span>, event.<span class="attribute">target</span>.<span class="attribute">value</span>);
+});
+
+<span class="comment">// Input focused</span>
+input.<span class="function">addEventListener</span>(<span class="string">'focus'</span>, () => {
+  input.<span class="attribute">classList</span>.<span class="function">add</span>(<span class="string">'focused'</span>);
+});
+
+<span class="comment">// Input blurred</span>
+input.<span class="function">addEventListener</span>(<span class="string">'blur'</span>, () => {
+  input.<span class="attribute">classList</span>.<span class="function">remove</span>(<span class="string">'focused'</span>);
+});</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use event delegation for dynamic elements</li>
+                <li>Remove listeners when elements are removed</li>
+                <li>Use <code>preventDefault()</code> wisely</li>
+                <li>Consider performance with frequent events</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Form submission and validation</li>
+                <li>User interactions (clicks, hovers)</li>
+                <li>Keyboard shortcuts</li>
+                <li>Real-time search/filtering</li>
+                <li>Drag and drop functionality</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

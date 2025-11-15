@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Media Elements</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>HTML Media Elements</h1>
+        <p>Learn how to embed images, videos, and audio content in your web pages.</p>
+
+        <h2>Image Element</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="string">"image.jpg"</span> <span class="attribute">alt</span>=<span class="string">"Description"</span> <span class="attribute">width</span>=<span class="string">"300"</span> <span class="attribute">height</span>=<span class="string">"200"</span><span class="tag">&gt;</span></code>
+        </div>
+
+        <h3>Image Attributes</h3>
+        <ul class="features">
+            <li><strong>src</strong> - Image file path or URL</li>
+            <li><strong>alt</strong> - Alternative text for accessibility</li>
+            <li><strong>width</strong> - Image width in pixels</li>
+            <li><strong>height</strong> - Image height in pixels</li>
+            <li><strong>loading</strong> - lazy or eager loading</li>
+            <li><strong>srcset</strong> - Responsive image sources</li>
+        </ul>
+
+        <div class="example">
+            <h3>Responsive Image with Picture Element</h3>
+            <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;picture&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">media</span>=<span class="string">"(max-width: 600px)"</span> <span class="attribute">srcset</span>=<span class="string">"image-mobile.jpg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">media</span>=<span class="string">"(max-width: 1200px)"</span> <span class="attribute">srcset</span>=<span class="string">"image-tablet.jpg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attribute">src</span>=<span class="string">"image-desktop.jpg"</span> <span class="attribute">alt</span>=<span class="string">"Description"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/picture&gt;</span></code>
+            </div>
+        </div>
+
+        <h2>Video Element</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;video</span> <span class="attribute">width</span>=<span class="string">"400"</span> <span class="attribute">height</span>=<span class="string">"300"</span> <span class="attribute">controls</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"video.mp4"</span> <span class="attribute">type</span>=<span class="string">"video/mp4"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"video.webm"</span> <span class="attribute">type</span>=<span class="string">"video/webm"</span><span class="tag">&gt;</span>
+  Your browser does not support the video tag.
+<span class="tag">&lt;/video&gt;</span></code>
+        </div>
+
+        <h3>Video Attributes</h3>
+        <ul class="features">
+            <li><strong>controls</strong> - Display video controls</li>
+            <li><strong>autoplay</strong> - Auto-play the video</li>
+            <li><strong>muted</strong> - Mute audio by default</li>
+            <li><strong>loop</strong> - Loop the video</li>
+            <li><strong>poster</strong> - Thumbnail image before play</li>
+            <li><strong>preload</strong> - Preload video (auto, metadata, none)</li>
+        </ul>
+
+        <div class="example">
+            <h3>Full Featured Video Player</h3>
+            <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;video</span> <span class="attribute">width</span>=<span class="string">"640"</span> <span class="attribute">height</span>=<span class="string">"360"</span> <span class="attribute">controls</span> <span class="attribute">poster</span>=<span class="string">"thumbnail.jpg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"video.mp4"</span> <span class="attribute">type</span>=<span class="string">"video/mp4"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"video.webm"</span> <span class="attribute">type</span>=<span class="string">"video/webm"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;track</span> <span class="attribute">kind</span>=<span class="string">"subtitles"</span> <span class="attribute">src</span>=<span class="string">"subtitles.vtt"</span> <span class="attribute">srclang</span>=<span class="string">"en"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/video&gt;</span></code>
+            </div>
+        </div>
+
+        <h2>Audio Element</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;audio</span> <span class="attribute">controls</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"audio.mp3"</span> <span class="attribute">type</span>=<span class="string">"audio/mpeg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"audio.ogg"</span> <span class="attribute">type</span>=<span class="string">"audio/ogg"</span><span class="tag">&gt;</span>
+  Your browser does not support the audio element.
+<span class="tag">&lt;/audio&gt;</span></code>
+        </div>
+
+        <h3>Audio Attributes</h3>
+        <ul class="features">
+            <li><strong>controls</strong> - Display audio controls</li>
+            <li><strong>autoplay</strong> - Auto-play audio</li>
+            <li><strong>loop</strong> - Loop the audio</li>
+            <li><strong>muted</strong> - Mute by default</li>
+            <li><strong>preload</strong> - Preload audio data</li>
+        </ul>
+
+        <div class="example">
+            <h3>Music Player Example</h3>
+            <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;audio</span> <span class="attribute">controls</span> <span class="attribute">preload</span>=<span class="string">"metadata"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"song.mp3"</span> <span class="attribute">type</span>=<span class="string">"audio/mpeg"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;source</span> <span class="attribute">src</span>=<span class="string">"song.ogg"</span> <span class="attribute">type</span>=<span class="string">"audio/ogg"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;/audio&gt;</span>
+
+<span class="tag">&lt;p&gt;</span>Artist: John Doe<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;p&gt;</span>Album: Greatest Hits<span class="tag">&lt;/p&gt;</span></code>
+            </div>
+        </div>
+
+        <h2>Supported Media Formats</h2>
+        <div class="use-cases">
+            <h3>Video Formats</h3>
+            <ul>
+                <li><strong>MP4</strong> (H.264) - Most widely supported</li>
+                <li><strong>WebM</strong> (VP8/VP9) - Good compression</li>
+                <li><strong>Ogg</strong> (Theora) - Free format</li>
+            </ul>
+
+            <h3>Audio Formats</h3>
+            <ul>
+                <li><strong>MP3</strong> - Widely supported</li>
+                <li><strong>WAV</strong> - Uncompressed</li>
+                <li><strong>OGG</strong> - Open format</li>
+            </ul>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always include alt text for images</li>
+                <li>Provide multiple source formats for videos</li>
+                <li>Use responsive image techniques</li>
+                <li>Optimize media files for web</li>
+                <li>Include captions and subtitles</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

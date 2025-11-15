@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Interfaces</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>TypeScript Interfaces</h1>
+        <p>Define contracts for object shapes and structure.</p>
+
+        <h2>Basic Interface</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">interface</span> User {
+    id: <span class="keyword">number</span>;
+    name: <span class="keyword">string</span>;
+    email: <span class="keyword">string</span>;
+    active?: <span class="keyword">boolean</span>;
+}
+
+<span class="keyword">const</span> user: User = {
+    id: 1,
+    name: <span class="string">"John"</span>,
+    email: <span class="string">"john@example.com"</span>
+};</code>
+        </div>
+
+        <h2>Interface Methods</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">interface</span> Database {
+    query(sql: <span class="keyword">string</span>): <span class="keyword">any</span>[];
+    <span class="function">connect</span>(): <span class="keyword">void</span>;
+    <span class="function">disconnect</span>(): <span class="keyword">void</span>;
+}
+
+<span class="keyword">class</span> PostgreSQL <span class="keyword">implements</span> Database {
+    <span class="function">query</span>(sql: <span class="keyword">string</span>) { }
+    <span class="function">connect</span>() { }
+    <span class="function">disconnect</span>() { }
+}</code>
+        </div>
+
+        <h2>Interface Inheritance</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">interface</span> Person {
+    name: <span class="keyword">string</span>;
+}
+
+<span class="keyword">interface</span> Employee <span class="keyword">extends</span> Person {
+    id: <span class="keyword">number</span>;
+    salary: <span class="keyword">number</span>;
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Property definitions</strong> - Define object structure</li>
+            <li><strong>Optional properties</strong> - Properties marked with ?</li>
+            <li><strong>Method signatures</strong> - Define function contracts</li>
+            <li><strong>Inheritance</strong> - Extend other interfaces</li>
+            <li><strong>Readonly properties</strong> - Immutable properties</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use interfaces for object contracts</li>
+                <li>Make properties optional when needed with ?</li>
+                <li>Extend interfaces for code reuse</li>
+                <li>Use readonly for immutable properties</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>API response types</li>
+                <li>Component props</li>
+                <li>Database models</li>
+                <li>Configuration objects</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

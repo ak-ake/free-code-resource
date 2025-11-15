@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ File I/O</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>C++ File Input/Output</h1>
+        <p>Learn file operations in C++ using streams.</p>
+
+        <h2>File Operations</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;fstream&gt;
+<span class="keyword">#include</span> &lt;iostream&gt;
+
+<span class="comment">// Write to file</span>
+ofstream outfile(<span class="string">"output.txt"</span>);
+outfile &lt;&lt; <span class="string">"Hello World"</span> &lt;&lt; endl;
+outfile.<span class="function">close</span>();
+
+<span class="comment">// Read from file</span>
+ifstream infile(<span class="string">"output.txt"</span>);
+string line;
+<span class="keyword">while</span> (getline(infile, line)) {
+    cout &lt;&lt; line &lt;&lt; endl;
+}
+infile.<span class="function">close</span>();</code>
+        </div>
+
+        <h2>File Modes</h2>
+        <ul class="features">
+            <li><strong>ios::in</strong> - Read mode</li>
+            <li><strong>ios::out</strong> - Write mode</li>
+            <li><strong>ios::app</strong> - Append mode</li>
+            <li><strong>ios::binary</strong> - Binary mode</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always check if file opened successfully</li>
+                <li>Close files after use</li>
+                <li>Handle file not found errors</li>
+                <li>Use binary mode for non-text files</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Data persistence</li>
+                <li>Configuration files</li>
+                <li>Logging</li>
+                <li>Data processing</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

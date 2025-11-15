@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Memory Management</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>C++ Memory Management</h1>
+        <p>Master dynamic memory allocation and smart pointers.</p>
+
+        <h2>Pointers</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="comment">// Declare pointer</span>
+<span class="keyword">int</span>* ptr;
+
+<span class="comment">// Get address</span>
+<span class="keyword">int</span> x = <span class="number">10</span>;
+ptr = &x;  <span class="comment">// Address of x</span>
+
+<span class="comment">// Dereference</span>
+<span class="keyword">int</span> value = *ptr;
+
+<span class="comment">// Pointer to pointer</span>
+<span class="keyword">int</span>** ptr_ptr = &ptr;</code>
+        </div>
+
+        <h2>Dynamic Memory</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="comment">// Allocate memory</span>
+<span class="keyword">int</span>* arr = <span class="keyword">new int</span>[<span class="number">10</span>];
+<span class="keyword">int</span>* single = <span class="keyword">new int</span>(<span class="number">5</span>);
+
+<span class="comment">// Use memory</span>
+arr[<span class="number">0</span>] = <span class="number">100</span>;
+*single = <span class="number">20</span>;
+
+<span class="comment">// Free memory (IMPORTANT!)</span>
+<span class="keyword">delete</span>[] arr;
+<span class="keyword">delete</span> single;</code>
+        </div>
+
+        <h2>Smart Pointers</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;memory&gt;
+
+<span class="comment">// unique_ptr - exclusive ownership</span>
+unique_ptr&lt;<span class="keyword">int</span>&gt; ptr1(<span class="keyword">new int</span>(<span class="number">10</span>));
+unique_ptr&lt;<span class="keyword">int</span>&gt; ptr2 = make_unique&lt;<span class="keyword">int</span>&gt;(<span class="number">20</span>);
+<span class="comment">// Automatically deleted</span>
+
+<span class="comment">// shared_ptr - shared ownership</span>
+shared_ptr&lt;<span class="keyword">int</span>&gt; sp1 = make_shared&lt;<span class="keyword">int</span>&gt;(<span class="number">30</span>);
+shared_ptr&lt;<span class="keyword">int</span>&gt; sp2 = sp1;
+<span class="comment">// Deleted when last reference is destroyed</span></code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Prefer smart pointers over raw pointers</li>
+                <li>Use <code>make_unique</code> and <code>make_shared</code></li>
+                <li>Always delete allocated memory</li>
+                <li>Avoid memory leaks</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>System programming</li>
+                <li>Performance optimization</li>
+                <li>Resource management</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

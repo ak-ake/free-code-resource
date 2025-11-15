@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Basic Types</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>TypeScript Basic Types</h1>
+        <p>Understanding TypeScript's type system and basic types.</p>
+
+        <h2>Primitive Types</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="comment">// String</span>
+<span class="keyword">let</span> name: <span class="keyword">string</span> = <span class="string">"Alice"</span>;
+
+<span class="comment">// Number</span>
+<span class="keyword">let</span> age: <span class="keyword">number</span> = 25;
+
+<span class="comment">// Boolean</span>
+<span class="keyword">let</span> isActive: <span class="keyword">boolean</span> = <span class="keyword">true</span>;
+
+<span class="comment">// Any (avoid using)</span>
+<span class="keyword">let</span> data: <span class="keyword">any</span> = <span class="string">"anything"</span>;
+
+<span class="comment">// Union Types</span>
+<span class="keyword">let</span> id: <span class="keyword">string</span> | <span class="keyword">number</span> = 123;</code>
+        </div>
+
+        <h2>Arrays and Tuples</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="comment">// Array of strings</span>
+<span class="keyword">let</span> colors: <span class="keyword">string</span>[] = [<span class="string">"red"</span>, <span class="string">"blue"</span>];
+
+<span class="comment">// Array generic syntax</span>
+<span class="keyword">let</span> numbers: Array&lt;<span class="keyword">number</span>&gt; = [1, 2, 3];
+
+<span class="comment">// Tuple</span>
+<span class="keyword">let</span> tuple: [<span class="keyword">string</span>, <span class="keyword">number</span>] = [<span class="string">"test"</span>, 42];</code>
+        </div>
+
+        <h2>Enums</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">enum</span> Direction {
+    Up = 1,
+    Down = 2,
+    Left = 3,
+    Right = 4
+}
+
+<span class="keyword">let</span> dir: Direction = Direction.Up;</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>string</strong> - Text values</li>
+            <li><strong>number</strong> - Integers and floats</li>
+            <li><strong>boolean</strong> - true/false values</li>
+            <li><strong>null & undefined</strong> - Absence of value</li>
+            <li><strong>any</strong> - Dynamic typing (use cautiously)</li>
+            <li><strong>void</strong> - Function return type</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always specify explicit types</li>
+                <li>Avoid using `any` type</li>
+                <li>Use union types for multiple possibilities</li>
+                <li>Use enums for fixed sets of values</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Type safety in large projects</li>
+                <li>IDE autocompletion</li>
+                <li>Catching errors early</li>
+                <li>Self-documenting code</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

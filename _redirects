@@ -1,0 +1,64 @@
+# Netlify redirects configuration
+# Place this as _redirects file in the root directory
+
+# Clean URLs - remove .html extension
+/index.html /
+/about.html /about
+/codes.html /codes
+/help.html /help
+/contribute.html /contribute
+/contributors.html /contributors
+/boaard.html /board
+
+# Redirect trailing slashes
+/assets/pages/about.html /about
+/assets/pages/codes.html /codes
+/assets/pages/help.html /help
+/assets/pages/contribute.html /contribute
+/assets/pages/contributors.html /contributors
+/assets/pages/boaard.html /board
+
+# Code example pages - maintain directory structure
+/assets/pages/codes/html_form_elements.html /codes/html/form-elements
+/assets/pages/codes/html_semantic_elements.html /codes/html/semantic-elements
+/assets/pages/codes/html_media_elements.html /codes/html/media-elements
+
+/assets/pages/codes/css_grid_layout.html /codes/css/grid-layout
+/assets/pages/codes/css_animations.html /codes/css/animations
+/assets/pages/codes/css_responsive_design.html /codes/css/responsive-design
+
+/assets/pages/codes/js_dom_manipulation.html /codes/javascript/dom-manipulation
+/assets/pages/codes/js_event_handling.html /codes/javascript/event-handling
+/assets/pages/codes/js_fetch_api.html /codes/javascript/fetch-api
+
+/assets/pages/codes/python_file_handling.html /codes/python/file-handling
+/assets/pages/codes/python_web_scraping.html /codes/python/web-scraping
+/assets/pages/codes/python_data_analysis.html /codes/python/data-analysis
+
+/assets/pages/codes/java_oop_concepts.html /codes/java/oop-concepts
+/assets/pages/codes/java_collections_framework.html /codes/java/collections-framework
+/assets/pages/codes/java_multithreading.html /codes/java/multithreading
+
+/assets/pages/codes/cpp_file_io.html /codes/cpp/file-io
+/assets/pages/codes/cpp_memory_management.html /codes/cpp/memory-management
+/assets/pages/codes/cpp_stl.html /codes/cpp/stl
+
+/assets/pages/codes/ts_basic_types.html /codes/typescript/basic-types
+/assets/pages/codes/ts_interfaces.html /codes/typescript/interfaces
+/assets/pages/codes/ts_generics.html /codes/typescript/generics
+
+/assets/pages/codes/ruby_blocks.html /codes/ruby/blocks
+/assets/pages/codes/ruby_file_handling.html /codes/ruby/file-handling
+/assets/pages/codes/ruby_metaprogramming.html /codes/ruby/metaprogramming
+
+/assets/pages/codes/dart_async_programming.html /codes/dart/async-programming
+/assets/pages/codes/dart_collections.html /codes/dart/collections
+/assets/pages/codes/dart_oop_concepts.html /codes/dart/oop-concepts
+
+/assets/pages/codes/go_goroutines.html /codes/go/goroutines
+/assets/pages/codes/go_channels.html /codes/go/channels
+/assets/pages/codes/go_error_handling.html /codes/go/error-handling
+
+# Redirect any trailing .html requests
+/*.html / 200
+/codes/*.html /codes/ 200

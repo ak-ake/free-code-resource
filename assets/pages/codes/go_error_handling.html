@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Error Handling</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Go Error Handling</h1>
+        <p>Proper error handling patterns in Go.</p>
+
+        <h2>Basic Error Handling</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"errors"</span>
+)
+
+<span class="keyword">func</span> <span class="function">divide</span>(a, b <span class="keyword">float64</span>) (<span class="keyword">float64</span>, <span class="keyword">error</span>) {
+    <span class="keyword">if</span> b == 0 {
+        <span class="keyword">return</span> 0, errors.<span class="function">New</span>(<span class="string">"division by zero"</span>)
+    }
+    <span class="keyword">return</span> a / b, <span class="keyword">nil</span>
+}
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    result, err := <span class="function">divide</span>(10, 0)
+    <span class="keyword">if</span> err != <span class="keyword">nil</span> {
+        fmt.<span class="function">Println</span>(<span class="string">"Error:"</span>, err)
+        <span class="keyword">return</span>
+    }
+    fmt.<span class="function">Println</span>(result)
+}</code>
+        </div>
+
+        <h2>Custom Errors</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">type</span> <span class="class-name">ValidationError</span> <span class="keyword">struct</span> {
+    Field   <span class="keyword">string</span>
+    Message <span class="keyword">string</span>
+}
+
+<span class="keyword">func</span> (e <span class="class-name">ValidationError</span>) <span class="function">Error</span>() <span class="keyword">string</span> {
+    <span class="keyword">return</span> fmt.<span class="function">Sprintf</span>(<span class="string">"Field: %s, Message: %s"</span>, e.Field, e.Message)
+}
+
+<span class="keyword">func</span> <span class="function">validateEmail</span>(email <span class="keyword">string</span>) <span class="keyword">error</span> {
+    <span class="keyword">if</span> email == <span class="string">""</span> {
+        <span class="keyword">return</span> <span class="class-name">ValidationError</span>{<span class="string">"email"</span>, <span class="string">"required"</span>}
+    }
+    <span class="keyword">return</span> <span class="keyword">nil</span>
+}</code>
+        </div>
+
+        <h2>Defer and Panic</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="keyword">defer</span> <span class="keyword">func</span>() {
+        <span class="keyword">if</span> r := <span class="function">recover</span>(); r != <span class="keyword">nil</span> {
+            fmt.<span class="function">Println</span>(<span class="string">"Recovered:"</span>, r)
+        }
+    }()
+
+    <span class="keyword">panic</span>(<span class="string">"something went wrong"</span>)
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Error interface</strong> - Implement Error() string</li>
+            <li><strong>Error wrapping</strong> - fmt.Errorf with %w</li>
+            <li><strong>Custom errors</strong> - Struct-based errors</li>
+            <li><strong>Defer</strong> - Cleanup operations</li>
+            <li><strong>Panic/Recover</strong> - Exception-like mechanism</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always check for errors explicitly</li>
+                <li>Use error wrapping for context</li>
+                <li>Return errors, don't panic</li>
+                <li>Use defer for resource cleanup</li>
+                <li>Create custom error types for domain logic</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>File operations</li>
+                <li>API calls</li>
+                <li>Database operations</li>
+                <li>Input validation</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

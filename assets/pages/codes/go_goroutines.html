@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Goroutines</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Go Goroutines</h1>
+        <p>Leverage Go's lightweight concurrency model.</p>
+
+        <h2>Basic Goroutines</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">func</span> <span class="function">sayHello</span>(name <span class="keyword">string</span>) {
+    fmt.<span class="function">Println</span>(<span class="string">"Hello"</span>, name)
+}
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="keyword">go</span> <span class="function">sayHello</span>(<span class="string">"Alice"</span>)
+    <span class="keyword">go</span> <span class="function">sayHello</span>(<span class="string">"Bob"</span>)
+    
+    time.<span class="function">Sleep</span>(1 * time.Second)
+}</code>
+        </div>
+
+        <h2>Goroutines with WaitGroup</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"sync"</span>
+)
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="keyword">var</span> wg sync.WaitGroup
+
+    <span class="keyword">for</span> i := 0; i &lt; 3; i++ {
+        wg.<span class="function">Add</span>(1)
+        <span class="keyword">go</span> <span class="keyword">func</span>(n <span class="keyword">int</span>) {
+            <span class="keyword">defer</span> wg.<span class="function">Done</span>()
+            fmt.<span class="function">Println</span>(n)
+        }(i)
+    }
+
+    wg.<span class="function">Wait</span>()
+}</code>
+        </div>
+
+        <h2>Spawning Multiple Goroutines</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"sync"</span>
+)
+
+<span class="keyword">func</span> <span class="function">worker</span>(id <span class="keyword">int</span>) {
+    fmt.<span class="function">Printf</span>(<span class="string">"Worker %d working\n"</span>, id)
+}
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="keyword">var</span> wg sync.WaitGroup
+
+    <span class="keyword">for</span> i := 1; i &lt;= 5; i++ {
+        wg.<span class="function">Add</span>(1)
+        <span class="keyword">go</span> <span class="keyword">func</span>(n <span class="keyword">int</span>) {
+            <span class="keyword">defer</span> wg.<span class="function">Done</span>()
+            <span class="function">worker</span>(n)
+        }(i)
+    }
+
+    wg.<span class="function">Wait</span>()
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>go keyword</strong> - Launch goroutine</li>
+            <li><strong>WaitGroup</strong> - Wait for goroutines</li>
+            <li><strong>Lightweight</strong> - Thousands of goroutines</li>
+            <li><strong>Scheduled</strong> - OS thread agnostic</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always use WaitGroup to synchronize</li>
+                <li>Avoid goroutine leaks</li>
+                <li>Use channels for communication</li>
+                <li>Be careful with shared state</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Concurrent tasks</li>
+                <li>Web servers</li>
+                <li>Parallel processing</li>
+                <li>Background jobs</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

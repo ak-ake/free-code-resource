@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Channels</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Go Channels</h1>
+        <p>Synchronize and communicate between goroutines.</p>
+
+        <h2>Basic Channels</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="comment">// Create channel</span>
+    results := <span class="keyword">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>)
+
+    <span class="keyword">go</span> <span class="keyword">func</span>() {
+        results &lt;- <span class="string">"message"</span>
+    }()
+
+    <span class="comment">// Receive from channel</span>
+    msg := &lt;-results
+    fmt.<span class="function">Println</span>(msg)
+}</code>
+        </div>
+
+        <h2>Buffered Channels</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    <span class="comment">// Buffered channel capacity 2</span>
+    ch := <span class="keyword">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, 2)
+
+    ch &lt;- 1
+    ch &lt;- 2
+
+    fmt.<span class="function">Println</span>(&lt;-ch)
+    fmt.<span class="function">Println</span>(&lt;-ch)
+}</code>
+        </div>
+
+        <h2>Select and Close</h2>
+        <div class="code-block" data-language="Go">
+<code><span class="keyword">package</span> <span class="class-name">main</span>
+
+<span class="keyword">import</span> <span class="string">"fmt"</span>
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    ch1 := <span class="keyword">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>)
+    ch2 := <span class="keyword">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>)
+
+    <span class="keyword">go</span> <span class="keyword">func</span>() { ch1 &lt;- <span class="string">"one"</span> }()
+    <span class="keyword">go</span> <span class="keyword">func</span>() { ch2 &lt;- <span class="string">"two"</span> }()
+
+    <span class="keyword">for</span> i := 0; i &lt; 2; i++ {
+        <span class="keyword">select</span> {
+        <span class="keyword">case</span> msg1 := &lt;-ch1:
+            fmt.<span class="function">Println</span>(<span class="string">"Channel 1:"</span>, msg1)
+        <span class="keyword">case</span> msg2 := &lt;-ch2:
+            fmt.<span class="function">Println</span>(<span class="string">"Channel 2:"</span>, msg2)
+        }
+    }
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Unbuffered channels</strong> - Synchronous communication</li>
+            <li><strong>Buffered channels</strong> - Asynchronous with capacity</li>
+            <li><strong>Select</strong> - Wait on multiple channels</li>
+            <li><strong>Close</strong> - Signal completion</li>
+            <li><strong>Range</strong> - Iterate over channels</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Close channels from sender only</li>
+                <li>Use select for multiplexing</li>
+                <li>Avoid channel deadlocks</li>
+                <li>Range over channels for iteration</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Inter-goroutine communication</li>
+                <li>Worker pools</li>
+                <li>Fan-in/fan-out patterns</li>
+                <li>Rate limiting</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

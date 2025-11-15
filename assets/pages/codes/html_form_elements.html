@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Elements</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>HTML Form Elements</h1>
+        <p>Learn how to create interactive forms in HTML with various input types and form controls.</p>
+
+        <h2>Overview</h2>
+        <p>HTML forms are essential for collecting user input. They consist of various elements that allow users to enter data, select options, and submit information.</p>
+
+        <h2>Basic Form Structure</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;form&gt;</span>
+  <span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="string">"name"</span><span class="tag">&gt;</span>Name:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">id</span>=<span class="string">"name"</span> <span class="attribute">name</span>=<span class="string">"name"</span> <span class="attribute">required</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="string">"email"</span><span class="tag">&gt;</span>Email:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"email"</span> <span class="attribute">id</span>=<span class="string">"email"</span> <span class="attribute">name</span>=<span class="string">"email"</span><span class="tag">&gt;</span>
+
+  <span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="string">"message"</span><span class="tag">&gt;</span>Message:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;textarea</span> <span class="attribute">id</span>=<span class="string">"message"</span> <span class="attribute">name</span>=<span class="string">"message"</span> <span class="attribute">rows</span>=<span class="string">"5"</span><span class="tag">&gt;&lt;/textarea&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="attribute">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Submit<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span></code>
+        </div>
+
+        <div class="example">
+            <h3>Real Example - Contact Form</h3>
+            <div class="code-block" data-language="HTML">
+<code><span class="tag">&lt;form</span> <span class="attribute">action</span>=<span class="string">"/submit"</span> <span class="attribute">method</span>=<span class="string">"POST"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;fieldset&gt;</span>
+    <span class="tag">&lt;legend&gt;</span>Personal Information<span class="tag">&lt;/legend&gt;</span>
+    
+    <span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="string">"firstName"</span><span class="tag">&gt;</span>First Name:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">id</span>=<span class="string">"firstName"</span> <span class="attribute">name</span>=<span class="string">"firstName"</span> <span class="attribute">required</span><span class="tag">&gt;</span>
+
+    <span class="tag">&lt;label</span> <span class="attribute">for</span>=<span class="string">"age"</span><span class="tag">&gt;</span>Age:<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"number"</span> <span class="attribute">id</span>=<span class="string">"age"</span> <span class="attribute">name</span>=<span class="string">"age"</span> <span class="attribute">min</span>=<span class="string">"18"</span> <span class="attribute">max</span>=<span class="string">"120"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;/fieldset&gt;</span>
+
+  <span class="tag">&lt;fieldset&gt;</span>
+    <span class="tag">&lt;legend&gt;</span>Preferences<span class="tag">&lt;/legend&gt;</span>
+    
+    <span class="tag">&lt;label&gt;</span><span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"checkbox"</span> <span class="attribute">name</span>=<span class="string">"newsletter"</span><span class="tag">&gt;</span> Subscribe to newsletter<span class="tag">&lt;/label&gt;</span>
+
+    <span class="tag">&lt;fieldset&gt;</span>
+      <span class="tag">&lt;legend&gt;</span>Rating<span class="tag">&lt;/legend&gt;</span>
+      <span class="tag">&lt;label&gt;</span><span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">name</span>=<span class="string">"rating"</span> <span class="attribute">value</span>=<span class="string">"good"</span><span class="tag">&gt;</span> Good<span class="tag">&lt;/label&gt;</span>
+      <span class="tag">&lt;label&gt;</span><span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">name</span>=<span class="string">"rating"</span> <span class="attribute">value</span>=<span class="string">"excellent"</span><span class="tag">&gt;</span> Excellent<span class="tag">&lt;/label&gt;</span>
+    <span class="tag">&lt;/fieldset&gt;</span>
+  <span class="tag">&lt;/fieldset&gt;</span>
+
+  <span class="tag">&lt;button</span> <span class="attribute">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Submit Form<span class="tag">&lt;/button&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute">type</span>=<span class="string">"reset"</span><span class="tag">&gt;</span>Clear<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span></code>
+            </div>
+        </div>
+
+        <h2>Common Input Types</h2>
+        <ul class="features">
+            <li><strong>text</strong> - Single-line text input</li>
+            <li><strong>email</strong> - Email address input with validation</li>
+            <li><strong>password</strong> - Masked password input</li>
+            <li><strong>number</strong> - Numeric input with spinner controls</li>
+            <li><strong>date</strong> - Date picker input</li>
+            <li><strong>color</strong> - Color picker</li>
+            <li><strong>range</strong> - Slider for numeric values</li>
+            <li><strong>checkbox</strong> - Multiple selection option</li>
+            <li><strong>radio</strong> - Single selection from group</li>
+            <li><strong>file</strong> - File upload input</li>
+        </ul>
+
+        <h2>Key Attributes</h2>
+        <div class="code-block" data-language="HTML">
+<code><span class="attribute">name</span> - Form control identifier
+<span class="attribute">id</span> - Unique element identifier
+<span class="attribute">required</span> - Field is mandatory
+<span class="attribute">placeholder</span> - Hint text displayed in input
+<span class="attribute">value</span> - Pre-filled value
+<span class="attribute">disabled</span> - Disables the input
+<span class="attribute">readonly</span> - Read-only field
+<span class="attribute">maxlength</span> - Maximum character length
+<span class="attribute">pattern</span> - Regex pattern for validation</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always use labels for form inputs for accessibility</li>
+                <li>Use the correct input type for better UX and validation</li>
+                <li>Include fieldsets to group related inputs</li>
+                <li>Use placeholder text sparingly, labels are primary</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Contact forms for customer feedback</li>
+                <li>Login and registration forms</li>
+                <li>Survey and questionnaire forms</li>
+                <li>User profile update forms</li>
+                <li>E-commerce checkout forms</li>
+                <li>Search bars and filters</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

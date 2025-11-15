@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby File Handling</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Ruby File Handling</h1>
+        <p>Read, write, and manipulate files in Ruby.</p>
+
+        <h2>Reading Files</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Read entire file</span>
+content = File.<span class="function">read</span>(<span class="string">"file.txt"</span>)
+
+<span class="comment"># Read line by line</span>
+File.<span class="function">foreach</span>(<span class="string">"file.txt"</span>) { |line| puts line }
+
+<span class="comment"># Using open</span>
+File.<span class="function">open</span>(<span class="string">"file.txt"</span>) <span class="keyword">do</span> |file|
+  file.<span class="function">each_line</span> { |line| puts line }
+<span class="keyword">end</span></code>
+        </div>
+
+        <h2>Writing Files</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Write to file (overwrites)</span>
+File.<span class="function">write</span>(<span class="string">"output.txt"</span>, <span class="string">"content"</span>)
+
+<span class="comment"># Append to file</span>
+File.<span class="function">write</span>(<span class="string">"output.txt"</span>, <span class="string">"\nmore content"</span>, mode: <span class="string">"a"</span>)
+
+<span class="comment"># Using open with write mode</span>
+File.<span class="function">open</span>(<span class="string">"output.txt"</span>, <span class="string">"w"</span>) <span class="keyword">do</span> |file|
+  file.<span class="function">puts</span> <span class="string">"Hello"</span>
+<span class="keyword">end</span></code>
+        </div>
+
+        <h2>File Operations</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Check if file exists</span>
+<span class="keyword">if</span> File.<span class="function">exist?</span>(<span class="string">"file.txt"</span>)
+  File.<span class="function">delete</span>(<span class="string">"file.txt"</span>)
+<span class="keyword">end</span>
+
+<span class="comment"># Copy file</span>
+FileUtils.<span class="function">copy</span>(<span class="string">"source.txt"</span>, <span class="string">"dest.txt"</span>)
+
+<span class="comment"># Directory operations</span>
+Dir.<span class="function">mkdir</span>(<span class="string">"new_dir"</span>)
+Dir.<span class="function">glob</span>(<span class="string">"*.txt"</span>)</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>File.read()</strong> - Read entire file</li>
+            <li><strong>File.write()</strong> - Write to file</li>
+            <li><strong>File.open()</strong> - Open with block</li>
+            <li><strong>File.foreach()</strong> - Iterate lines</li>
+            <li><strong>Dir operations</strong> - Directory management</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always use blocks for file operations</li>
+                <li>Files close automatically with blocks</li>
+                <li>Handle exceptions (IOError, FileNotFound)</li>
+                <li>Use absolute paths for clarity</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Log files</li>
+                <li>Configuration loading</li>
+                <li>Data import/export</li>
+                <li>File processing</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

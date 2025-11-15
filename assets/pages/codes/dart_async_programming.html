@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dart Async Programming</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Dart Async Programming</h1>
+        <p>Handle asynchronous operations with Futures and async/await.</p>
+
+        <h2>Futures</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">Future</span>&lt;String&gt; <span class="function">fetchData</span>() {
+  <span class="keyword">return</span> <span class="keyword">Future</span>.<span class="function">delayed</span>(
+    <span class="class-name">Duration</span>(seconds: 2),
+    () =&gt; <span class="string">"Data loaded"</span>
+  );
+}
+
+<span class="function">fetchData</span>().<span class="function">then</span>((data) {
+  print(data);
+}).<span class="function">catchError</span>((error) {
+  print(<span class="string">"Error: $error"</span>);
+});</code>
+        </div>
+
+        <h2>Async/Await</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">void</span> <span class="function">main</span>() <span class="keyword">async</span> {
+  <span class="keyword">try</span> {
+    <span class="keyword">var</span> data = <span class="keyword">await</span> <span class="function">fetchData</span>();
+    print(data);
+  } <span class="keyword">catch</span> (e) {
+    print(<span class="string">"Error: $e"</span>);
+  }
+}
+
+<span class="keyword">Future</span>&lt;String&gt; <span class="function">fetchData</span>() <span class="keyword">async</span> {
+  <span class="keyword">await</span> <span class="keyword">Future</span>.<span class="function">delayed</span>(
+    <span class="class-name">Duration</span>(seconds: 2)
+  );
+  <span class="keyword">return</span> <span class="string">"Data loaded"</span>;
+}</code>
+        </div>
+
+        <h2>Streams</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">Stream</span>&lt;int&gt; <span class="function">countStream</span>() <span class="keyword">async</span>* {
+  <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; 5; i++) {
+    <span class="keyword">await</span> <span class="keyword">Future</span>.<span class="function">delayed</span>(
+      <span class="class-name">Duration</span>(seconds: 1)
+    );
+    <span class="keyword">yield</span> i;
+  }
+}
+
+<span class="keyword">await</span> <span class="keyword">for</span> (<span class="keyword">int</span> value <span class="keyword">in</span> <span class="function">countStream</span>()) {
+  print(value);
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Future</strong> - One-time async result</li>
+            <li><strong>async/await</strong> - Cleaner async syntax</li>
+            <li><strong>Stream</strong> - Multiple async values</li>
+            <li><strong>async*</strong> - Generator functions</li>
+            <li><strong>yield</strong> - Emit values</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use async/await over then/catchError</li>
+                <li>Always handle errors with try/catch</li>
+                <li>Use streams for continuous data</li>
+                <li>Cancel streams when done</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>API calls</li>
+                <li>File operations</li>
+                <li>Real-time data streams</li>
+                <li>UI event handling</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

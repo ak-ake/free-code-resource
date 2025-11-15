@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Metaprogramming</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Ruby Metaprogramming</h1>
+        <p>Write code that writes code - powerful Ruby techniques.</p>
+
+        <h2>Dynamic Method Definition</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="keyword">class</span> <span class="class-name">Person</span>
+  <span class="keyword">def</span> <span class="function">method_missing</span>(name, *args)
+    <span class="keyword">if</span> name.to_s.<span class="function">start_with?</span>(<span class="string">"get_"</span>)
+      <span class="string">"Getting "</span> + name.to_s.<span class="function">sub</span>(<span class="string">"get_"</span>, <span class="string">""</span>)
+    <span class="keyword">else</span>
+      <span class="keyword">super</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+person = <span class="class-name">Person</span>.<span class="keyword">new</span>
+puts person.<span class="function">get_name</span>  <span class="comment"># => Getting name</span></code>
+        </div>
+
+        <h2>attr_accessor and Define Methods</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="keyword">class</span> <span class="class-name">User</span>
+  <span class="function">attr_accessor</span> :name, :email
+  <span class="function">attr_reader</span> :id
+
+  <span class="function">define_method</span>(<span class="string">"greet"</span>) <span class="keyword">do</span>
+    puts <span class="string">"Hello, "</span> + @name
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+user = <span class="class-name">User</span>.<span class="keyword">new</span>
+user.name = <span class="string">"John"</span>
+user.<span class="function">greet</span></code>
+        </div>
+
+        <h2>Reflection and Introspection</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Check methods</span>
+obj.<span class="function">methods</span>
+obj.<span class="function">instance_variables</span>
+
+<span class="comment"># Get class information</span>
+obj.<span class="function">class</span>
+obj.<span class="function">is_a?</span>(<span class="class-name">String</span>)
+
+<span class="comment"># Call methods dynamically</span>
+obj.<span class="function">send</span>(<span class="string">:method_name</span>, args)
+obj.<span class="function">respond_to?</span>(<span class="string">:method_name</span>)</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>method_missing</strong> - Handle undefined methods</li>
+            <li><strong>define_method</strong> - Create methods dynamically</li>
+            <li><strong>attr_accessor</strong> - Auto-generate getters/setters</li>
+            <li><strong>send</strong> - Call methods by name</li>
+            <li><strong>Reflection</strong> - Inspect object structure</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use metaprogramming sparingly</li>
+                <li>Document dynamic behavior clearly</li>
+                <li>Prefer explicit over implicit</li>
+                <li>Test thoroughly for edge cases</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>DSL (Domain Specific Language) creation</li>
+                <li>ORM frameworks (Rails)</li>
+                <li>Testing frameworks</li>
+                <li>Plugin systems</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

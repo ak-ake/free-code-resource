@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Blocks and Procs</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Ruby Blocks and Procs</h1>
+        <p>Master Ruby's powerful block and proc mechanisms.</p>
+
+        <h2>Blocks</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Iterate with blocks</span>
+[1, 2, 3].<span class="function">each</span> { |n| puts n * 2 }
+
+<span class="comment"># Method with yield</span>
+<span class="keyword">def</span> <span class="function">greet</span>
+  puts <span class="string">"Hello"</span>
+  <span class="keyword">yield</span>
+  puts <span class="string">"Goodbye"</span>
+<span class="keyword">end</span>
+
+<span class="function">greet</span> { puts <span class="string">"Nice to meet you"</span> }</code>
+        </div>
+
+        <h2>Procs</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Create a proc</span>
+multiply = Proc.<span class="keyword">new</span> { |x| x * 2 }
+puts <span class="function">multiply</span>.<span class="function">call</span>(5)  <span class="comment"># => 10</span>
+
+<span class="comment"># Pass proc as argument</span>
+<span class="keyword">def</span> <span class="function">process</span>(&block)
+  <span class="function">block</span>.<span class="function">call</span>(<span class="string">"data"</span>)
+<span class="keyword">end</span>
+
+<span class="function">process</span> { |data| puts data }</code>
+        </div>
+
+        <h2>Lambdas</h2>
+        <div class="code-block" data-language="Ruby">
+<code><span class="comment"># Lambda</span>
+square = -&gt;(x) { x * x }
+puts <span class="function">square</span>.<span class="function">call</span>(4)  <span class="comment"># => 16</span>
+
+<span class="comment"># Difference: lambdas check arity</span>
+my_lambda = -&gt;(x) { puts x }
+<span class="function">my_lambda</span>.<span class="function">call</span>(1, 2)  <span class="comment"># => Error!</span></code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Blocks</strong> - Unnamed functions passed to methods</li>
+            <li><strong>Procs</strong> - Object versions of blocks</li>
+            <li><strong>Lambdas</strong> - Strict procs with arity checking</li>
+            <li><strong>yield</strong> - Call blocks from methods</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use blocks for simple operations</li>
+                <li>Use lambdas for strict validation</li>
+                <li>Prefer lambdas over procs</li>
+                <li>Handle block parameters explicitly</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Iteration patterns</li>
+                <li>Callbacks</li>
+                <li>Custom DSLs</li>
+                <li>Functional programming</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

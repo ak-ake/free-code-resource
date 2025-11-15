@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ STL</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>C++ Standard Template Library (STL)</h1>
+        <p>Master STL containers and algorithms for powerful C++ programming.</p>
+
+        <h2>Vector - Dynamic Array</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;vector&gt;
+<span class="keyword">using namespace</span> std;
+
+<span class="comment">// Create vector</span>
+vector&lt;<span class="keyword">int</span>&gt; nums;
+nums.<span class="function">push_back</span>(<span class="number">10</span>);
+nums.<span class="function">push_back</span>(<span class="number">20</span>);
+
+<span class="comment">// Access elements</span>
+<span class="keyword">int</span> first = nums[<span class="number">0</span>];
+<span class="keyword">int</span> second = nums.<span class="function">at</span>(<span class="number">1</span>);
+
+<span class="comment">// Remove elements</span>
+nums.<span class="function">pop_back</span>();
+nums.<span class="function">erase</span>(nums.<span class="function">begin</span>());</code>
+        </div>
+
+        <h2>Map - Key-Value Pairs</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;map&gt;
+
+<span class="comment">// Map creation</span>
+map&lt;string, <span class="keyword">int</span>&gt; ages;
+ages[<span class="string">"Alice"</span>] = <span class="number">25</span>;
+ages[<span class="string">"Bob"</span>] = <span class="number">30</span>;
+
+<span class="comment">// Access and iterate</span>
+<span class="keyword">for</span> (<span class="keyword">auto</span> pair : ages) {
+    cout &lt;&lt; pair.<span class="keyword">first</span> &lt;&lt; <span class="string">": "</span> &lt;&lt; pair.<span class="keyword">second</span> &lt;&lt; endl;
+}</code>
+        </div>
+
+        <h2>Set - Unique Elements</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;set&gt;
+
+<span class="comment">// Set creation</span>
+set&lt;<span class="keyword">int</span>&gt; unique_nums;
+unique_nums.<span class="function">insert</span>(<span class="number">5</span>);
+unique_nums.<span class="function">insert</span>(<span class="number">3</span>);
+unique_nums.<span class="function">insert</span>(<span class="number">7</span>);  <span class="comment">// Automatically sorted</span>
+
+<span class="comment">// Check existence</span>
+<span class="keyword">if</span> (unique_nums.<span class="function">find</span>(<span class="number">5</span>) != unique_nums.<span class="function">end</span>()) {
+    cout &lt;&lt; <span class="string">"Found"</span> &lt;&lt; endl;
+}</code>
+        </div>
+
+        <h2>STL Algorithms</h2>
+        <div class="code-block" data-language="C++">
+<code"><span class="keyword">#include</span> &lt;algorithm&gt;
+
+<span class="comment">// Sort</span>
+sort(nums.<span class="function">begin</span>(), nums.<span class="function">end</span>());
+
+<span class="comment">// Reverse</span>
+reverse(nums.<span class="function">begin</span>(), nums.<span class="function">end</span>());
+
+<span class="comment">// Find</span>
+<span class="keyword">auto</span> it = <span class="function">find</span>(nums.<span class="function">begin</span>(), nums.<span class="function">end</span>(), <span class="number">10</span>);
+
+<span class="comment">// Copy</span>
+vector&lt;<span class="keyword">int</span>&gt; copy_nums(nums);
+
+<span class="comment">// Count</span>
+<span class="keyword">int</span> count = <span class="function">count</span>(nums.<span class="function">begin</span>(), nums.<span class="function">end</span>(), <span class="number">10</span>);</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use iterators for safe element access</li>
+                <li>Prefer STL containers over raw arrays</li>
+                <li>Use <code>auto</code> for cleaner code</li>
+                <li>Check iterator validity after modifications</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>System programming</li>
+                <li>Game development</li>
+                <li>Performance-critical applications</li>
+                <li>Embedded systems</li>
+                <li>High-performance computing</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

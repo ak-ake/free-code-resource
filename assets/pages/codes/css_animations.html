@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>CSS Animations</h1>
+        <p>Create smooth, engaging animations using CSS keyframes and transitions.</p>
+
+        <h2>CSS Transitions</h2>
+        <p>Transitions smoothly animate changes between states on an element.</p>
+        <div class="code-block" data-language="CSS">
+<code><span class="class-name">.button</span> {
+  <span class="keyword">background-color</span>: <span class="string">blue</span>;
+  <span class="keyword">transition</span>: <span class="string">background-color</span> <span class="number">0.3s</span> <span class="string">ease-in-out</span>;
+}
+
+<span class="class-name">.button:hover</span> {
+  <span class="keyword">background-color</span>: <span class="string">darkblue</span>;
+}</code>
+        </div>
+
+        <h3>Transition Properties</h3>
+        <ul class="features">
+            <li><strong>transition-property</strong> - Which property to animate</li>
+            <li><strong>transition-duration</strong> - How long the transition takes</li>
+            <li><strong>transition-timing-function</strong> - Speed curve (ease, linear, etc.)</li>
+            <li><strong>transition-delay</strong> - Delay before animation starts</li>
+        </ul>
+
+        <h2>CSS Keyframe Animations</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="keyword">@keyframes</span> <span class="function">slideIn</span> {
+  <span class="keyword">from</span> {
+    <span class="keyword">opacity</span>: <span class="number">0</span>;
+    <span class="keyword">transform</span>: <span class="function">translateX</span>(<span class="number">-100px</span>);
+  }
+  <span class="keyword">to</span> {
+    <span class="keyword">opacity</span>: <span class="number">1</span>;
+    <span class="keyword">transform</span>: <span class="function">translateX</span>(<span class="number">0</span>);
+  }
+}
+
+<span class="class-name">.element</span> {
+  <span class="keyword">animation</span>: <span class="string">slideIn</span> <span class="number">0.5s</span> <span class="string">ease-out</span>;
+}</code>
+        </div>
+
+        <div class="example">
+            <h3>Complex Keyframe Animation</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="keyword">@keyframes</span> <span class="function">pulse</span> {
+  <span class="number">0%</span> {
+    <span class="keyword">transform</span>: <span class="function">scale</span>(<span class="number">1</span>);
+    <span class="keyword">opacity</span>: <span class="number">1</span>;
+  }
+  <span class="number">50%</span> {
+    <span class="keyword">transform</span>: <span class="function">scale</span>(<span class="number">1.1</span>);
+    <span class="keyword">opacity</span>: <span class="number">0.8</span>;
+  }
+  <span class="number">100%</span> {
+    <span class="keyword">transform</span>: <span class="function">scale</span>(<span class="number">1</span>);
+    <span class="keyword">opacity</span>: <span class="number">1</span>;
+  }
+}
+
+<span class="class-name">.loader</span> {
+  <span class="keyword">animation</span>: <span class="string">pulse</span> <span class="number">1s</span> <span class="string">infinite</span> <span class="string">ease-in-out</span>;
+}</code>
+            </div>
+        </div>
+
+        <h2>Animation Properties</h2>
+        <ul class="features">
+            <li><strong>animation-name</strong> - Name of the keyframe animation</li>
+            <li><strong>animation-duration</strong> - Duration of animation</li>
+            <li><strong>animation-timing-function</strong> - Speed curve</li>
+            <li><strong>animation-delay</strong> - Delay before start</li>
+            <li><strong>animation-iteration-count</strong> - Number of times to repeat</li>
+            <li><strong>animation-direction</strong> - Normal, reverse, alternate</li>
+            <li><strong>animation-fill-mode</strong> - State before/after animation</li>
+        </ul>
+
+        <h2>Common Timing Functions</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="keyword">ease</span> - Slow start and end
+<span class="keyword">linear</span> - Constant speed
+<span class="keyword">ease-in</span> - Slow start
+<span class="keyword">ease-out</span> - Slow end
+<span class="keyword">ease-in-out</span> - Slow start and end
+<span class="keyword">cubic-bezier</span>(<span class="number">0.25</span>, <span class="number">0.1</span>, <span class="number">0.25</span>, <span class="number">1</span>) - Custom timing</code>
+        </div>
+
+        <div class="example">
+            <h3>Loading Animation</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="keyword">@keyframes</span> <span class="function">spin</span> {
+  <span class="number">from</span> {
+    <span class="keyword">transform</span>: <span class="function">rotate</span>(<span class="number">0deg</span>);
+  }
+  <span class="keyword">to</span> {
+    <span class="keyword">transform</span>: <span class="function">rotate</span>(<span class="number">360deg</span>);
+  }
+}
+
+<span class="class-name">.spinner</span> {
+  <span class="keyword">border</span>: <span class="number">4px</span> <span class="string">solid</span> <span class="string">#f3f3f3</span>;
+  <span class="keyword">border-top</span>: <span class="number">4px</span> <span class="string">solid</span> <span class="string">#3498db</span>;
+  <span class="keyword">border-radius</span>: <span class="number">50%</span>;
+  <span class="keyword">width</span>: <span class="number">40px</span>;
+  <span class="keyword">height</span>: <span class="number">40px</span>;
+  <span class="keyword">animation</span>: <span class="string">spin</span> <span class="number">1s</span> <span class="string">linear</span> <span class="string">infinite</span>;
+}</code>
+            </div>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Keep animations smooth and purposeful</li>
+                <li>Use transitions for simple state changes</li>
+                <li>Use keyframes for complex animations</li>
+                <li>Consider performance on mobile devices</li>
+                <li>Avoid excessive animations</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Loading spinners and progress bars</li>
+                <li>Hover effects on buttons and links</li>
+                <li>Page transitions and scroll animations</li>
+                <li>Interactive UI elements</li>
+                <li>Visual feedback for user actions</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

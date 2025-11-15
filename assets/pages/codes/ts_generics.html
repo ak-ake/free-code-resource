@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Generics</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>TypeScript Generics</h1>
+        <p>Create reusable components that work with multiple types.</p>
+
+        <h2>Generic Functions</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">function</span> identity&lt;T&gt;(arg: T): T {
+    <span class="keyword">return</span> arg;
+}
+
+<span class="keyword">let</span> output1 = <span class="function">identity</span>&lt;<span class="keyword">string</span>&gt;(<span class="string">"hello"</span>);
+<span class="keyword">let</span> output2 = <span class="function">identity</span>&lt;<span class="keyword">number</span>&gt;(42);</code>
+        </div>
+
+        <h2>Generic Classes</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">class</span> Box&lt;T&gt; {
+    contents: T;
+
+    <span class="function">constructor</span>(value: T) {
+        <span class="keyword">this</span>.contents = value;
+    }
+
+    <span class="function">getValue</span>(): T {
+        <span class="keyword">return</span> <span class="keyword">this</span>.contents;
+    }
+}
+
+<span class="keyword">const</span> box = <span class="keyword">new</span> <span class="function">Box</span>&lt;<span class="keyword">string</span>&gt;(<span class="string">"test"</span>);</code>
+        </div>
+
+        <h2>Generic Constraints</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">interface</span> HasLength {
+    <span class="attribute">length</span>: <span class="keyword">number</span>;
+}
+
+<span class="keyword">function</span> printLength&lt;T <span class="keyword">extends</span> HasLength&gt;(arg: T) {
+    console.<span class="function">log</span>(arg.length);
+}
+
+<span class="function">printLength</span>(<span class="string">"hello"</span>);</code>
+        </div>
+
+        <h2>Generic Interfaces</h2>
+        <div class="code-block" data-language="TypeScript">
+<code><span class="keyword">interface</span> Pair&lt;T, U&gt; {
+    first: T;
+    second: U;
+}
+
+<span class="keyword">const</span> pair: Pair&lt;<span class="keyword">string</span>, <span class="keyword">number</span>&gt; = {
+    first: <span class="string">"age"</span>,
+    second: 25
+};</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Generic type parameters</strong> - &lt;T&gt;, &lt;T, U&gt;</li>
+            <li><strong>Type constraints</strong> - extends keyword</li>
+            <li><strong>Default types</strong> - T = string</li>
+            <li><strong>Keyof operator</strong> - Get object keys</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use meaningful generic names (T, U, K, V)</li>
+                <li>Add constraints for better type safety</li>
+                <li>Use generics for reusable components</li>
+                <li>Avoid unnecessary generic parameters</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>API utilities</li>
+                <li>Data structures</li>
+                <li>React components</li>
+                <li>State management</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

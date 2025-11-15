@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Responsive Design</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>CSS Responsive Design</h1>
+        <p>Create websites that look great on all devices using responsive design principles.</p>
+
+        <h2>Mobile-First Approach</h2>
+        <p>Start with mobile design and enhance for larger screens.</p>
+        <div class="code-block" data-language="CSS">
+<code><span class="comment">/* Mobile styles (base) */</span>
+<span class="class-name">.container</span> {
+  <span class="keyword">width</span>: <span class="number">100%</span>;
+  <span class="keyword">padding</span>: <span class="number">1rem</span>;
+}
+
+<span class="comment">/* Tablet and above */</span>
+<span class="keyword">@media</span> (<span class="keyword">min-width</span>: <span class="number">768px</span>) {
+  <span class="class-name">.container</span> {
+    <span class="keyword">width</span>: <span class="number">750px</span>;
+    <span class="keyword">margin</span>: <span class="number">0</span> <span class="string">auto</span>;
+  }
+}
+
+<span class="comment">/* Desktop and above */</span>
+<span class="keyword">@media</span> (<span class="keyword">min-width</span>: <span class="number">1024px</span>) {
+  <span class="class-name">.container</span> {
+    <span class="keyword">width</span>: <span class="number">970px</span>;
+  }
+}</code>
+        </div>
+
+        <h2>Responsive Breakpoints</h2>
+        <ul class="features">
+            <li><strong>Mobile</strong> - 320px to 767px</li>
+            <li><strong>Tablet</strong> - 768px to 1023px</li>
+            <li><strong>Desktop</strong> - 1024px and above</li>
+            <li><strong>Large Desktop</strong> - 1440px and above</li>
+        </ul>
+
+        <h2>Flexible Grid System</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="class-name">.grid</span> {
+  <span class="keyword">display</span>: <span class="string">grid</span>;
+  <span class="keyword">grid-template-columns</span>: <span class="number">1fr</span>;
+  <span class="keyword">gap</span>: <span class="number">1rem</span>;
+}
+
+<span class="keyword">@media</span> (<span class="keyword">min-width</span>: <span class="number">768px</span>) {
+  <span class="class-name">.grid</span> {
+    <span class="keyword">grid-template-columns</span>: <span class="number">1fr</span> <span class="number">1fr</span>;
+  }
+}
+
+<span class="keyword">@media</span> (<span class="keyword">min-width</span>: <span class="number">1024px</span>) {
+  <span class="class-name">.grid</span> {
+    <span class="keyword">grid-template-columns</span>: <span class="number">1fr</span> <span class="number">1fr</span> <span class="number">1fr</span>;
+  }
+}</code>
+        </div>
+
+        <div class="example">
+            <h3>Responsive Navbar</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="class-name">nav</span> {
+  <span class="keyword">display</span>: <span class="string">flex</span>;
+  <span class="keyword">flex-direction</span>: <span class="string">column</span>;
+}
+
+<span class="class-name">nav a</span> {
+  <span class="keyword">padding</span>: <span class="number">1rem</span>;
+}
+
+<span class="keyword">@media</span> (<span class="keyword">min-width</span>: <span class="number">768px</span>) {
+  <span class="class-name">nav</span> {
+    <span class="keyword">flex-direction</span>: <span class="string">row</span>;
+    <span class="keyword">gap</span>: <span class="number">2rem</span>;
+  }
+
+  <span class="class-name">nav a</span> {
+    <span class="keyword">padding</span>: <span class="number">0</span>;
+  }
+}</code>
+            </div>
+        </div>
+
+        <h2>Responsive Units</h2>
+        <ul class="features">
+            <li><strong>px</strong> - Fixed pixels</li>
+            <li><strong>em</strong> - Relative to parent font size</li>
+            <li><strong>rem</strong> - Relative to root font size</li>
+            <li><strong>%</strong> - Percentage of parent</li>
+            <li><strong>vw</strong> - Viewport width</li>
+            <li><strong>vh</strong> - Viewport height</li>
+            <li><strong>vmin</strong> - Smaller of vw or vh</li>
+            <li><strong>vmax</strong> - Larger of vw or vh</li>
+        </ul>
+
+        <h2>Responsive Images</h2>
+        <div class="code-block" data-language="CSS">
+<code><span class="class-name">img</span> {
+  <span class="keyword">max-width</span>: <span class="number">100%</span>;
+  <span class="keyword">height</span>: <span class="string">auto</span>;
+}
+
+<span class="class-name">.responsive-img</span> {
+  <span class="keyword">width</span>: <span class="number">100%</span>;
+  <span class="keyword">display</span>: <span class="string">block</span>;
+}</code>
+        </div>
+
+        <h2>Media Query Features</h2>
+        <ul class="features">
+            <li><strong>min-width</strong> - Minimum viewport width</li>
+            <li><strong>max-width</strong> - Maximum viewport width</li>
+            <li><strong>orientation</strong> - Portrait or landscape</li>
+            <li><strong>prefers-reduced-motion</strong> - Accessibility preference</li>
+            <li><strong>prefers-color-scheme</strong> - Light or dark mode</li>
+        </ul>
+
+        <div class="example">
+            <h3>Dark Mode Support</h3>
+            <div class="code-block" data-language="CSS">
+<code><span class="comment">/* Light mode - default */</span>
+<span class="class-name">body</span> {
+  <span class="keyword">background</span>: <span class="string">white</span>;
+  <span class="keyword">color</span>: <span class="string">black</span>;
+}
+
+<span class="comment">/* Dark mode */</span>
+<span class="keyword">@media</span> (<span class="keyword">prefers-color-scheme</span>: <span class="string">dark</span>) {
+  <span class="class-name">body</span> {
+    <span class="keyword">background</span>: <span class="string">#1a1a1a</span>;
+    <span class="keyword">color</span>: <span class="string">#ffffff</span>;
+  }
+}</code>
+            </div>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Always use mobile-first approach</li>
+                <li>Test on real devices</li>
+                <li>Use flexible units (em, rem, %)</li>
+                <li>Don't rely on screen size alone</li>
+                <li>Optimize images for different sizes</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Creating mobile-first websites</li>
+                <li>Building adaptive layouts</li>
+                <li>Supporting multiple devices</li>
+                <li>Improving accessibility</li>
+                <li>Creating progressive web apps</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

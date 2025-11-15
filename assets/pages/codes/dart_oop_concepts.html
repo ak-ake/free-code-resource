@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dart OOP Concepts</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Dart OOP Concepts</h1>
+        <p>Master object-oriented programming in Dart.</p>
+
+        <h2>Classes and Objects</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">class</span> <span class="class-name">Person</span> {
+  <span class="keyword">String</span> name;
+  <span class="keyword">int</span> age;
+
+  <span class="class-name">Person</span>(<span class="keyword">this</span>.name, <span class="keyword">this</span>.age);
+
+  <span class="keyword">void</span> <span class="function">introduce</span>() {
+    print(<span class="string">"I'm $name"</span>);
+  }
+}
+
+<span class="keyword">var</span> person = <span class="class-name">Person</span>(<span class="string">"Alice"</span>, 30);
+person.<span class="function">introduce</span>();</code>
+        </div>
+
+        <h2>Inheritance</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">class</span> <span class="class-name">Animal</span> {
+  <span class="keyword">void</span> <span class="function">speak</span>() => print(<span class="string">"Sound"</span>);
+}
+
+<span class="keyword">class</span> <span class="class-name">Dog</span> <span class="keyword">extends</span> <span class="class-name">Animal</span> {
+  @override
+  <span class="keyword">void</span> <span class="function">speak</span>() => print(<span class="string">"Woof!"</span>);
+}
+
+<span class="keyword">var</span> dog = <span class="class-name">Dog</span>();
+dog.<span class="function">speak</span>();  <span class="comment">// => Woof!</span></code>
+        </div>
+
+        <h2>Interfaces and Mixins</h2>
+        <div class="code-block" data-language="Dart">
+<code><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="class-name">Shape</span> {
+  <span class="keyword">double</span> <span class="function">area</span>();
+}
+
+<span class="keyword">mixin</span> <span class="class-name">Drawable</span> {
+  <span class="keyword">void</span> <span class="function">draw</span>() => print(<span class="string">"Drawing"</span>);
+}
+
+<span class="keyword">class</span> <span class="class-name">Circle</span> <span class="keyword">extends</span> <span class="class-name">Shape</span> <span class="keyword">with</span> <span class="class-name">Drawable</span> {
+  <span class="keyword">double</span> radius;
+
+  <span class="class-name">Circle</span>(<span class="keyword">this</span>.radius);
+
+  @override
+  <span class="keyword">double</span> <span class="function">area</span>() =&gt; 3.14 * radius * radius;
+}</code>
+        </div>
+
+        <ul class="features">
+            <li><strong>Classes</strong> - Object blueprints</li>
+            <li><strong>Inheritance</strong> - Extend classes</li>
+            <li><strong>Abstract classes</strong> - Define interfaces</li>
+            <li><strong>Mixins</strong> - Multiple inheritance alternative</li>
+            <li><strong>Getters/Setters</strong> - Property access</li>
+        </ul>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use final for immutable properties</li>
+                <li>Prefer composition over inheritance</li>
+                <li>Use abstract classes for interfaces</li>
+                <li>Keep classes focused and single-responsibility</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Model domain objects</li>
+                <li>Create reusable components</li>
+                <li>Organize code structure</li>
+                <li>Implement design patterns</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

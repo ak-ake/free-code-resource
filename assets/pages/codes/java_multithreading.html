@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Multithreading</title>
+    <link rel="stylesheet" href="../../css/code-example.css">
+</head>
+<body>
+    <header>
+        <a href="../../../index.html" class="logo">
+            <img src="../../img/coso.png" alt="FreeCode Logo" class="logo-img">
+            <span>FreeCode</span>
+        </a>
+        <div>
+            <nav>
+                <a href="../../../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../codes.html">Codes</a>
+                <a href="../help.html">Help</a>
+                <a href="../contribute.html">Contribute</a>
+                <a href="../contributors.html">Contributors</a>
+                <a href="../boaard.html">Board</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <a href="../codes.html" class="back-btn">← Back to Codes</a>
+
+        <h1>Java Multithreading</h1>
+        <p>Learn concurrent programming with Java threads.</p>
+
+        <h2>Creating Threads</h2>
+        <div class="code-block" data-language="Java">
+<code><span class="comment">// Method 1: Extend Thread class</span>
+<span class="keyword">class</span> <span class="class-name">MyThread</span> <span class="keyword">extends</span> Thread {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="function">run</span>() {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">5</span>; i++) {
+            System.out.<span class="function">println</span>(<span class="string">"Thread: "</span> + i);
+            <span class="keyword">try</span> {
+                Thread.<span class="function">sleep</span>(<span class="number">1000</span>);  <span class="comment">// Sleep 1 second</span>
+            } <span class="keyword">catch</span> (InterruptedException e) {
+                e.<span class="function">printStackTrace</span>();
+            }
+        }
+    }
+}
+
+<span class="comment">// Create and start thread</span>
+MyThread thread = <span class="keyword">new</span> <span class="function">MyThread</span>();
+thread.<span class="function">start</span>();</code>
+        </div>
+
+        <h2>Implementing Runnable</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="comment">// Method 2: Implement Runnable interface</span>
+<span class="keyword">class</span> <span class="class-name">MyRunnable</span> <span class="keyword">implements</span> Runnable {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public void</span> <span class="function">run</span>() {
+        System.out.<span class="function">println</span>(<span class="string">"Running in thread: "</span> + 
+                           Thread.<span class="function">currentThread</span>().<span class="function">getName</span>());
+    }
+}
+
+<span class="comment">// Create thread with Runnable</span>
+Thread thread = <span class="keyword">new</span> <span class="function">Thread</span>(<span class="keyword">new</span> <span class="function">MyRunnable</span>());
+thread.<span class="function">start</span>();
+
+<span class="comment">// Or using lambda</span>
+Thread thread2 = <span class="keyword">new</span> <span class="function">Thread</span>(() -> {
+    System.out.<span class="function">println</span>(<span class="string">"Lambda thread"</span>);
+});
+thread2.<span class="function">start</span>();</code>
+        </div>
+
+        <div class="example">
+            <h3>Thread Synchronization</h3>
+            <div class="code-block" data-language="Java">
+<code"><span class="keyword">class</span> <span class="class-name">Counter</span> {
+    <span class="keyword">private int</span> count = <span class="number">0</span>;
+    
+    <span class="comment">// Synchronized method</span>
+    <span class="keyword">public synchronized void</span> <span class="function">increment</span>() {
+        count++;
+    }
+    
+    <span class="keyword">public synchronized int</span> <span class="function">getCount</span>() {
+        <span class="keyword">return</span> count;
+    }
+}
+
+<span class="comment">// Multiple threads can safely use Counter</span>
+Counter counter = <span class="keyword">new</span> <span class="function">Counter</span>();
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++) {
+    <span class="keyword">new</span> <span class="function">Thread</span>(() -> counter.<span class="function">increment</span>()).<span class="function">start</span>();
+}</code>
+            </div>
+        </div>
+
+        <h2>Thread States</h2>
+        <ul class="features">
+            <li><strong>NEW</strong> - Thread created but not started</li>
+            <li><strong>RUNNABLE</strong> - Ready to run or running</li>
+            <li><strong>BLOCKED</strong> - Waiting for lock</li>
+            <li><strong>WAITING</strong> - Waiting for another thread</li>
+            <li><strong>TIMED_WAITING</strong> - Waiting with timeout</li>
+            <li><strong>TERMINATED</strong> - Thread finished execution</li>
+        </ul>
+
+        <h2>Thread Pool (ExecutorService)</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="keyword">import java.util.concurrent.*;</span>
+
+<span class="comment">// Create thread pool with 5 threads</span>
+ExecutorService executor = Executors.<span class="function">newFixedThreadPool</span>(<span class="number">5</span>);
+
+<span class="comment">// Submit tasks</span>
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i < <span class="number">10</span>; i++) {
+    executor.<span class="function">submit</span>(() -> {
+        System.out.<span class="function">println</span>(<span class="string">"Task running"</span>);
+    });
+}
+
+<span class="comment">// Shutdown executor</span>
+executor.<span class="function">shutdown</span>();
+executor.<span class="function">awaitTermination</span>(<span class="number">1</span>, TimeUnit.MINUTES);</code>
+        </div>
+
+        <h2>Volatile and Atomic</h2>
+        <div class="code-block" data-language="Java">
+<code"><span class="keyword">import java.util.concurrent.atomic.*;</span>
+
+<span class="comment">// Volatile - ensures visibility</span>
+<span class="keyword">private volatile boolean</span> running = <span class="keyword">true</span>;
+
+<span class="comment">// AtomicInteger - thread-safe counter</span>
+AtomicInteger counter = <span class="keyword">new</span> <span class="function">AtomicInteger</span>(<span class="number">0</span>);
+counter.<span class="function">incrementAndGet</span>();
+counter.<span class="function">decrementAndGet</span>();
+<span class="keyword">int</span> value = counter.<span class="function">get</span>();</code>
+        </div>
+
+        <div class="tips">
+            <strong>Best Practices:</strong>
+            <ul style="color: var(--text-lighter); padding-left: 2rem; margin-top: 0.5rem;">
+                <li>Use thread pools instead of creating threads</li>
+                <li>Minimize synchronized blocks</li>
+                <li>Use concurrent collections</li>
+                <li>Handle InterruptedException properly</li>
+                <li>Avoid deadlocks</li>
+            </ul>
+        </div>
+
+        <h2>Use Cases</h2>
+        <div class="use-cases">
+            <ul>
+                <li>Responsive user interfaces</li>
+                <li>Server handling multiple clients</li>
+                <li>Parallel data processing</li>
+                <li>Asynchronous operations</li>
+                <li>Real-time applications</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

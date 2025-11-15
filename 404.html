@@ -1,46 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="5">
     <script>
-        // Clean URL redirect for GitHub Pages
-        // Removes .html extension from URLs
-        
-        (function() {
-            // Get the requested path
-            let path = window.location.pathname;
-            let repo = '/free-code-resource';
-            
-            // Remove repository name from path
-            if (path.startsWith(repo)) {
-                path = path.slice(repo.length);
+        // Robust clean-URL redirect for GitHub Pages
+        // Tries several candidate paths and redirects to the first that exists.
+        (function () {
+            const path = window.location.pathname;
+
+            // Determine repository base (e.g. '/free-code-resource') or '' for user root
+            const parts = path.split('/');
+            const repoBase = parts.length > 1 && parts[1] ? '/' + parts[1] : '';
+
+            // Relative part after repo base
+            let rel = path.slice(repoBase.length) || '/';
+
+            // If requested URL already contains .html, redirect to clean version
+            if (rel.endsWith('.html')) {
+                const clean = repoBase + rel.replace(/\.html$/, '/') ;
+                window.location.replace(clean + window.location.search + window.location.hash);
+                return;
             }
-            
-            // If path ends with .html, remove it
-            if (path.endsWith('.html')) {
-                let newPath = path.slice(0, -5);
-                
-                // Handle index.html
-                if (newPath === '' || newPath === '/index') {
-                    newPath = '/';
-                }
-                
-                // Redirect to clean URL
-                window.location.replace(repo + newPath + window.location.search + window.location.hash);
+
+            // Normalize rel so it starts with '/'
+            if (!rel.startsWith('/')) rel = '/' + rel;
+
+            // Build candidate URLs to test (in order)
+            const candidates = [];
+
+            // 1) Direct mapping: /{repo}{rel}.html  (e.g. /free-code-resource/assets/pages/codes.html)
+            if (rel === '/' ) {
+                candidates.push(repoBase + '/index.html');
+            } else {
+                candidates.push(repoBase + rel.replace(/\/$/, '') + '.html');
             }
-            // If path doesn't end with .html or /, try adding .html
-            else if (!path.endsWith('/') && path !== '/') {
-                let htmlPath = path + '.html';
-                
-                // Redirect to .html version
-                window.location.replace(repo + htmlPath + window.location.search + window.location.hash);
+
+            // 2) Try mapping into /assets/pages if not already there
+            if (!rel.startsWith('/assets')) {
+                if (rel === '/') candidates.push(repoBase + '/assets/pages/index.html');
+                else candidates.push(repoBase + '/assets/pages' + rel.replace(/\/$/, '') + '.html');
             }
+
+            // 3) Try with trailing index.html (for paths like /foo/ -> /foo/index.html)
+            if (!rel.endsWith('/')) {
+                candidates.push(repoBase + rel + '/index.html');
+            } else {
+                candidates.push(repoBase + rel + 'index.html');
+            }
+
+            // Remove duplicates while preserving order
+            const seen = new Set();
+            const uniq = candidates.filter((c) => {
+                if (seen.has(c)) return false;
+                seen.add(c);
+                return true;
+            });
+
+            // Try each candidate with HEAD request; on success redirect
+            let i = 0;
+            function tryNext() {
+                if (i >= uniq.length) return; // nothing found
+                const url = uniq[i++];
+                fetch(url, { method: 'HEAD', cache: 'no-store' })
+                    .then((r) => {
+                        if (r && r.ok) {
+                            window.location.replace(url + window.location.search + window.location.hash);
+                        } else {
+                            tryNext();
+                        }
+                    })
+                    .catch(() => tryNext());
+            }
+
+            tryNext();
         })();
     </script>
 </head>
 <body>
-    <p>Redirecting...</p>
+    <p>Redirecting… If you are not redirected automatically, try the full URL in your browser.</p>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Clean URL redirect for GitHub Pages
+        // Removes .html extension from URLs
+        
+        (function() {
+            // Get the requested path
+            let path = window.location.pathname;
+            let repo = '/free-code-resource';
+            
+            // Remove repository name from path
+            if (path.startsWith(repo)) {
+                path = path.slice(repo.length);
+            }
+            
+            // If path ends with .html, remove it
+            if (path.endsWith('.html')) {
+                let newPath = path.slice(0, -5);
+                
+                // Handle index.html
+                if (newPath === '' || newPath === '/index') {
+                    newPath = '/';
+                }
+                
+                // Redirect to clean URL
+                window.location.replace(repo + newPath + window.location.search + window.location.hash);
+            }
+            // If path doesn't end with .html or /, try adding .html
+            else if (!path.endsWith('/') && path !== '/') {
+                let htmlPath = path + '.html';
+                
+                // Redirect to .html version
+                window.location.replace(repo + htmlPath + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>

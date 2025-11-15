@@ -81,6 +81,7 @@ header nav {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
 
 header a {
   color: var(--text-light);

@@ -21,15 +21,18 @@ https://ak-ake.github.io/free-code-resource/
 ## Important Files Included
 
 - **.nojekyll** - Tells GitHub Pages to serve files as-is without Jekyll processing
+- **404.html** - Enables clean URLs by removing .html extensions (GitHub Pages special feature)
 - **GITHUB_PAGES_SETUP.md** - This setup guide
 - All HTML, CSS, and image files are GitHub Pages compatible
 
 ## URL Structure
 
-GitHub Pages will serve your website with URLs like:
+GitHub Pages will serve your website with clean URLs (no .html extension):
 - Homepage: `https://ak-ake.github.io/free-code-resource/`
-- About: `https://ak-ake.github.io/free-code-resource/assets/pages/about.html`
-- Codes: `https://ak-ake.github.io/free-code-resource/assets/pages/codes.html`
+- About: `https://ak-ake.github.io/free-code-resource/assets/pages/about/`
+- Codes: `https://ak-ake.github.io/free-code-resource/assets/pages/codes/`
+
+**Note:** The `404.html` file automatically handles URL redirects and removes `.html` extensions. If you visit a `.html` URL, it will redirect to the clean version.
 
 ### To Add Clean URLs (Optional)
 

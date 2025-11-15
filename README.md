@@ -2,7 +2,7 @@
 
 A vast **open-source library of free code, scripts, and snippets** for everyone — from beginners to pros.  
 Built and maintained by the community 💪  
-**Project by [@ak-akib](https://github.com/ak-akib)**
+**Project by [@ak-akib](https://github.com/ak-ake)**
 
 ---
 
@@ -77,6 +77,6 @@ You’re free to use, share, and modify any code — just give proper credit.
 **🌟 Want to support this project?**
 **Give it a star — it really helps others find it!**
 
-**👨‍💻 Made with ❤️ by @ak-akib**
+**👨‍💻 Made with ❤️ by @ak-ake**
 
 ---

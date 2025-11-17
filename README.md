@@ -2,7 +2,7 @@
 
 A vast **open-source library of free code, scripts, and snippets** for everyone — from beginners to pros.  
 Built and maintained by the community 💪  
-**Project by [@ak-akib](https://github.com/ak-ake)**
+**Project by [@ak-ake](https://github.com/ak-ake)**
 
 ---
 
@@ -28,7 +28,7 @@ Contributing is simple and open to everyone.
 Follow these steps to share your code or improve existing ones 👇
 
 ### 1️⃣ Fork the repo
-Click **“Fork”** on the top right of [this page](https://github.com/ak-akib/free-code-resource).
+Click **“Fork”** on the top right of [this page](https://github.com/ak-ake/free-code-resource).
 
 ### 2️⃣ Clone your fork
 ```bash
